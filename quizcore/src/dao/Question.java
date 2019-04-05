@@ -1,9 +1,7 @@
-package com.team1.project3.quizdao;
+package dao;
 
-import javax.lang.model.type.ArrayType;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class Question implements Iterable<String> {
     private String title;

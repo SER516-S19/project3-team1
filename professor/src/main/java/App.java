@@ -1,11 +1,11 @@
-package com.team1.project3.studentapp;
-
 import javax.swing.*;
 
-public class Main {
+
+
+public class App {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Student App");
-        frame.setContentPane(new StudentApp().$$$getRootComponent$$$());
+        JFrame frame = new JFrame("Professor App");
+        frame.setContentPane(new ProfessorView().$$$getRootComponent$$$());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

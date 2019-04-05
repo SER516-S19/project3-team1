@@ -1,5 +1,3 @@
-package com.team1.project3.professorapp;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
