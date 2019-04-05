@@ -6,6 +6,8 @@ import com.intellij.uiDesigner.core.Spacer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StudentApp {
     private JTextArea textArea1;
@@ -26,6 +28,25 @@ public class StudentApp {
 // >>> IMPORTANT!! <<<
 // DO NOT EDIT OR ADD ANY CODE HERE!
         $$$setupUI$$$();
+    }
+
+    public StudentApp() {
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            //TO DO
+
+                String title = textArea1.getText();
+                String option1 = textField1.getText();
+                String option2 = textField2.getText();
+                String option3 = textField3.getText();
+                String option4 = textField4.getText();
+                Boolean is_option_a_correct = aRadioButton.isSelected();
+                Boolean is_option_b_correct = bRadioButton.isSelected();
+                Boolean is_option_c_correct = cRadioButton.isSelected();
+                Boolean is_option_d_correct = dRadioButton.isSelected();
+            }
+        });
     }
 
     /**
