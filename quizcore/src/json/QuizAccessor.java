@@ -1,14 +1,16 @@
-package com.team1.project3.quizdao;
+package json;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import dao.Quiz;
+import dao.Question;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class QuizAccessor {
     public static Quiz OpenQuiz(String filepath) throws IOException {
-        OpenQuiz(new File(filepath));
+        return OpenQuiz(new File(filepath));
     }
 
     public static Quiz OpenQuiz(File file) throws IOException {
@@ -59,10 +61,6 @@ public class QuizAccessor {
         }
         reader.endObject();
         return new Question(title, options, answer);
-    }
-
-    public static Quiz OpenQuiz(String filepath, Quiz quiz) throws IOException {
-        OpenQuiz(new File(filepath), quiz);
     }
 
     public static void SaveQuiz(File file, Quiz quiz) throws IOException {

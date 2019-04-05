@@ -1,4 +1,4 @@
-package com.team1.project3.studentapp;
+package main.java;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -7,7 +7,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import javax.swing.*;
 import java.awt.*;
 
-public class StudentApp {
+public class StudentView {
     private JTextArea textArea1;
     private JRadioButton aRadioButton;
     private JRadioButton bRadioButton;

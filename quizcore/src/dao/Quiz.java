@@ -1,4 +1,4 @@
-package com.team1.project3.quizdao;
+package dao;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,15 +13,15 @@ public class Quiz implements Iterable<Question> {
         this.title = name;
     }
 
-    void addQuestion(Question new_question) {
+    public void addQuestion(Question new_question) {
         questionList.add(new_question);
     }
 
-    Question getQuestion(int index) {
+    public Question getQuestion(int index) {
         return questionList.get(index);
     }
 
-    int getQuestionCount() {
+    public int getQuestionCount() {
         return questionList.size();
     }
 
