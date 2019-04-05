@@ -34,11 +34,13 @@ public class StudentApp {
     /**
      * This method is responsible for evaluating each question attempted in the quiz.
      * If the answer selected by user is incorrect, it adds the question's index to a list of incorrect questions.
+     *
      * @param currentQuestionIndex
      * @param selectedOptionIndex
      */
-    public void evaluateAnswer(int currentQuestionIndex, int selectedOptionIndex){
-        //if (Quiz.getInstance().getQuestions.get(currentQuestionIndex).correctAnswer
+    private void evaluateAnswer(int currentQuestionIndex, int selectedOptionIndex){
+        //Will modify the code once we have access to DAO attributes.
+        // if (Quiz.getInstance().getQuestions.get(currentQuestionIndex).correctAnswer
         // == Quiz.getInstance().getQuestions.get(currentQuestionIndex).selectedOptionIndex)
         if(correctAnswer != selectedOptionIndex)
             incorrectQuestionsIndex.add(currentQuestionIndex);
