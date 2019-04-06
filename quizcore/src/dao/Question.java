@@ -1,33 +1,39 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-public class Question implements Iterable<String> {
+public class Question {
+
     private String title;
-    private ArrayList<String> options;
-    private String correct_answer;
+    private List<String> options;
+    private String correctAnswer;
 
-    public Question(String title, ArrayList<String> options, String answer) {
-        this.title = title;
-        this.options = options;
-        this.correct_answer = answer;
+    public Question() {
+        options = new ArrayList<String>();
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getOption(int i) {
-        return options.get(i);
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 
     public String getCorrectAnswer() {
-        return correct_answer;
+        return correctAnswer;
     }
 
-    @Override
-    public Iterator<String> iterator() {
-        return options.iterator();
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 }

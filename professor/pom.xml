@@ -17,6 +17,11 @@
             <artifactId>forms_rt</artifactId>
             <version>7.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.team1</groupId>
+            <artifactId>quizcore</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,7 +57,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>App</mainClass>
+                                    <mainClass>ProfessorApp</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
