@@ -21,11 +21,34 @@ public class StudentView extends JFrame {
     private JTextField choiceD;
     private JLabel quizTitle;
 
+
+    private JLabel questionNumber;
+    private JLabel questionTitle;
     public JLabel getQuizTitleLabel() {
         return quizTitle;
     }
-    private JLabel questionNumber;
-    private JLabel questionTitle;
+
+    public JTextField getchoiceALabel() {
+        return choiceA;
+    }
+    public JTextField getchoiceBLabel() {
+        return choiceB;
+    }
+    public JTextField getchoiceCLabel() {
+        return choiceC;
+    }
+    public JTextField getchoiceDLabel() {
+        return choiceD;
+    }
+    public JLabel getQuestionNumberLabel() {
+        return questionNumber;
+    }
+
+    public JLabel getQuestionTitleLabel() {
+        return questionTitle;
+    }
+
+
 
 
 
