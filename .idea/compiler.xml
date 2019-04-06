@@ -6,11 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="QuizApp" />
+        <module name="professor" />
+        <module name="quizcore" />
+        <module name="student" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="QuizApp" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

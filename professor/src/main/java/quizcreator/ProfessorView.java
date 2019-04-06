@@ -1,4 +1,4 @@
-package com.team1.project3.professorapp;
+package main.java.quizcreator;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -7,7 +7,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import javax.swing.*;
 import java.awt.*;
 
-public class ProfessorApp extends JFrame {
+public class ProfessorView extends JFrame {
     public JPanel panel_ProfessorApp;
     private JTextArea textArea1;
     private JButton nextButton;
