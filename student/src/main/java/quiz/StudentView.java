@@ -1,4 +1,4 @@
-package main.java;
+package main.java.quiz;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
