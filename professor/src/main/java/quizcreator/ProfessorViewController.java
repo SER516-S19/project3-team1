@@ -1,3 +1,5 @@
+package main.java.quizcreator;
+
 import javax.swing.*;
 
 public class ProfessorViewController {

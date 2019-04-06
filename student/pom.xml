@@ -20,25 +20,9 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>ideauidesigner-maven-plugin</artifactId>
-                <version>1.0-beta-1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>javac2</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <fork>true</fork>
-                    <debug>false</debug>
-                    <failOnError>true</failOnError>
-                </configuration>
-            </plugin>
+        <sourceDirectory>src</sourceDirectory>
 
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -52,7 +36,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>StudentApp</mainClass>
+                                    <mainClass>main.java.app.StudentApp</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

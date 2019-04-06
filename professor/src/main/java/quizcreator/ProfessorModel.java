@@ -1,3 +1,5 @@
+package main.java.quizcreator;
+
 import dao.Quiz;
 import json.QuizAccessor;
 
@@ -15,6 +17,6 @@ public class ProfessorModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 }
