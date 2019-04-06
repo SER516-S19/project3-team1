@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class QuizAccessor {
     public static Quiz OpenQuiz(String filepath) throws IOException {
         OpenQuiz(new File(filepath));
+
+
     }
 
     public static Quiz OpenQuiz(File file) throws IOException {
@@ -63,6 +65,7 @@ public class QuizAccessor {
 
     public static Quiz OpenQuiz(String filepath, Quiz quiz) throws IOException {
         OpenQuiz(new File(filepath), quiz);
+
     }
 
     public static void SaveQuiz(File file, Quiz quiz) throws IOException {
