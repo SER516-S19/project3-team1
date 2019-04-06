@@ -21,6 +21,9 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
+              <hideActionText value="false"/>
+              <selected value="false"/>
               <text value="A"/>
             </properties>
           </component>
@@ -162,4 +165,12 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="buttonGroup1">
+      <member id="aa120"/>
+      <member id="3b5b1"/>
+      <member id="60df7"/>
+      <member id="ec42b"/>
+    </group>
+  </buttonGroups>
 </form>
