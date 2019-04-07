@@ -6,6 +6,9 @@ import com.intellij.uiDesigner.core.Spacer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class StudentView extends JFrame {
     private JRadioButton aRadioButton;
@@ -48,6 +51,11 @@ public class StudentView extends JFrame {
         return questionTitle;
     }
 
+    public JButton getNextButton() { return nextButton;}
+    public JRadioButton getaRadioButton() { return aRadioButton; }
+    public JRadioButton getbRadioButton(){ return bRadioButton; }
+    public JRadioButton getcRadioButton() { return cRadioButton; }
+    public JRadioButton getdRadioButton() { return dRadioButton; }
 
 
 
