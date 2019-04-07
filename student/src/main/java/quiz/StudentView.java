@@ -25,6 +25,7 @@ public class StudentView extends JFrame {
     private JTextField choiceD;
     private JLabel quizTitle;
     private int number_of_incorrect_answers=0;
+    private int i =2;
 
     private JLabel questionNumber;
     private JLabel questionTitle;
@@ -66,7 +67,14 @@ public class StudentView extends JFrame {
         choiceD.setText("choiceD");
         nextButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                if(i!=0)
+                {
+                    i--;
+                }
+                else
+                {
                 Popup popup = new Popup(number_of_incorrect_answers);
+                }
             }
         });
 
