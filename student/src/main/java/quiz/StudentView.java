@@ -25,7 +25,7 @@ public class StudentView extends JFrame {
     private JTextField choiceD;
     private JLabel quizTitle;
     private int number_of_incorrect_answers=0;
-    private int i =2;
+    private int i =1;
 
     private JLabel questionNumber;
     private JLabel questionTitle;
