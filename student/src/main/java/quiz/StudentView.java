@@ -23,8 +23,6 @@ public class StudentView extends JFrame {
     private JTextField choiceC;
     private JTextField choiceD;
     private JLabel quizTitle;
-
-
     private JLabel questionNumber;
     private JLabel questionTitle;
     public JLabel getQuizTitleLabel() {
@@ -57,9 +55,6 @@ public class StudentView extends JFrame {
     public JRadioButton getcRadioButton() { return cRadioButton; }
     public JRadioButton getdRadioButton() { return dRadioButton; }
 
-
-
-
     public StudentView() {
         quizTitle.setText("Quiz Title");
         questionNumber.setText("Question Number");
@@ -68,7 +63,6 @@ public class StudentView extends JFrame {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-
 
     }
 
