@@ -1,5 +1,4 @@
 package main.java.quizcreator;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,10 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class ProfessorViewController {
-    private ProfessorView professorView;
-    private ProfessorModel professorModel;
-    public ProfessorViewController(ProfessorView professorView, ProfessorModel professorModel) {
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class ProfessorViewController
+    {
+        private ProfessorView professorView;
+        private ProfessorModel professorModel;
+        public ProfessorViewController(ProfessorView professorView, ProfessorModel professorModel) {
         this.professorView = professorView;
         this.professorModel = professorModel;
         initializeView();
@@ -116,13 +120,19 @@ public class ProfessorViewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (professorView.getOptionA().isSelected() == false && professorView.getOptionB().isSelected() == false
-                        && professorView.getOptionC().isSelected() == false && professorView.getOptionD().isSelected() == false)
+                        && professorView.getOptionC().isSelected() == false && professorView.getOptionD().isSelected() == false){
                     JOptionPane.showMessageDialog(null,
                             "Please select at lease one correct answer");
+                }else {
+                    saveCurrentQuestion();
+                }
+
             }
+
         });
     }
-    private void initializeView() {
+    private void initializeView()
+    {
         JFrame frame = new JFrame("Professor");
         frame.setContentPane(professorView.$$$getRootComponent$$$());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -130,4 +140,17 @@ public class ProfessorViewController {
         frame.pack();
         frame.setVisible(true);
     }
+
+    private void saveCurrentQuestion() {
+        List<String> options = new ArrayList<String>();
+        options.add(professorView.getAnswerInput1().getText());
+        options.add(professorView.getAnswerInput2().getText());
+        options.add(professorView.getAnswerInput3().getText());
+        options.add(professorView.getAnswerInput4().getText());
+        String questionTitle = professorView.getQuestionInput().getText();
+        professorModel.saveQuestion(questionTitle, options, "");
+
+    }
+
 }
+
