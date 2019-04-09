@@ -24,11 +24,12 @@ public class StudentView extends JFrame {
     private JTextField choiceC;
     private JTextField choiceD;
     private JLabel quizTitle;
-    private int number_of_incorrect_answers=0;
-    private int i =1;
+    private int number_of_incorrect_answers = 0;
+    private int i = 1;
 
     private JLabel questionNumber;
     private JLabel questionTitle;
+
     public JLabel getQuizTitleLabel() {
         return quizTitle;
     }
@@ -36,15 +37,19 @@ public class StudentView extends JFrame {
     public JTextField getchoiceALabel() {
         return choiceA;
     }
+
     public JTextField getchoiceBLabel() {
         return choiceB;
     }
+
     public JTextField getchoiceCLabel() {
         return choiceC;
     }
+
     public JTextField getchoiceDLabel() {
         return choiceD;
     }
+
     public JLabel getQuestionNumberLabel() {
         return questionNumber;
     }
@@ -53,11 +58,25 @@ public class StudentView extends JFrame {
         return questionTitle;
     }
 
-    public JButton getNextButton() { return nextButton;}
-    public JRadioButton getaRadioButton() { return aRadioButton; }
-    public JRadioButton getbRadioButton(){ return bRadioButton; }
-    public JRadioButton getcRadioButton() { return cRadioButton; }
-    public JRadioButton getdRadioButton() { return dRadioButton; }
+    public JButton getNextButton() {
+        return nextButton;
+    }
+
+    public JRadioButton getaRadioButton() {
+        return aRadioButton;
+    }
+
+    public JRadioButton getbRadioButton() {
+        return bRadioButton;
+    }
+
+    public JRadioButton getcRadioButton() {
+        return cRadioButton;
+    }
+
+    public JRadioButton getdRadioButton() {
+        return dRadioButton;
+    }
 
     public StudentView() {
         quizTitle.setText("Quiz Title");
@@ -67,20 +86,21 @@ public class StudentView extends JFrame {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-        nextButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                if(i!=0)
-                {
+        nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (i != 0) {
                     i--;
-                }
-                else
-                {
-                Popup popup = new Popup(number_of_incorrect_answers);
+                } else {
+                    Popup popup = new Popup(number_of_incorrect_answers);
                 }
             }
         });
 
-
+        giveUpButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
 
     }
