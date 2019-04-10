@@ -1,13 +1,26 @@
 # Project 3 Team 1: QuizApp  
 
-## Building  
+## Members
+ - Janice Abraham
+ - Krishna Chandu Akula
+ - John Alden
+ - Janani Anand
+ - Shefali Anand
+ - Suraj Atmakuri
+ - Pallavi Bahl
+ - Mayank Batra
+ - Ankita Shivanand Bhandari
+ - Pradeep Ambalam Jawaharlal
 
-`maven package`  
-This project is built by maven using multiple executions layered into a general build.  
-As of now I have not determined a way to build just the student or professor applications.  
+## Building
 
-## Running  
+To build the student Application: `mvn package -am -pl student`  
+To build the professor Application: `mvn package -am -pl professor`  
 
-The jar files are located in `target/` after compilation.  
-Student: `java -jar target/StudentApp.jar`  
-Professor: `java -jar target/ProfessorApp.jar`  
+## Running
+
+The jar files are located in `target/` in each sub-project directory after compilation.  
+Student: `java -jar student/target/StudentApp.jar`  
+Professor: `java -jar professor/target/ProfessorApp.jar`  
+
+Quizzes should be placed in the `Resources/` directory in the root of the project.  
