@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class ProfessorView extends JFrame {
+public class QuizCreatorView extends JFrame {
     public JPanel panel_ProfessorApp;
     private JTextArea QuestionInput;
     private JButton nextButton;
@@ -21,18 +21,6 @@ public class ProfessorView extends JFrame {
     private JRadioButton OptionB;
     private JRadioButton OptionC;
     private JRadioButton OptionD;
-    private ButtonGroup buttonGroup;
-    private JLabel label1;
-
-    public JLabel getLabel1() {
-        return label1;
-    }
-
-
-    public ButtonGroup getButtonGroup() {
-        return buttonGroup;
-    }
-
 
     public JPanel getPanel_ProfessorApp() {
         return panel_ProfessorApp;
@@ -78,16 +66,16 @@ public class ProfessorView extends JFrame {
         return OptionD;
     }
 
-    public ProfessorView() {
+    public QuizCreatorView() {
         answerInput1.setText("Enter Option 1");
         answerInput2.setText("Enter Option 2");
         answerInput3.setText("Enter Option 3");
         answerInput4.setText("Enter Option 4");
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(OptionA);
-        buttonGroup.add(OptionB);
-        buttonGroup.add(OptionC);
-        buttonGroup.add(OptionD);
+        ButtonGroup group = new ButtonGroup();
+        group.add(OptionA);
+        group.add(OptionB);
+        group.add(OptionC);
+        group.add(OptionD);
     }
 
     public JButton getNextButton() {
@@ -115,9 +103,9 @@ public class ProfessorView extends JFrame {
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        final JLabel label2 = new JLabel();
-        label2.setText("Question 1");
-        panel1.add(label2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label1 = new JLabel();
+        label1.setText("Question 1");
+        panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         QuestionInput = new JTextArea();
         QuestionInput.setText("");
         panel_ProfessorApp.add(QuestionInput, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
@@ -167,5 +155,4 @@ public class ProfessorView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel_ProfessorApp;
     }
-
 }

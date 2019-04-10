@@ -1,4 +1,4 @@
-package main.java.quiz;
+package main.java.quiztaker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

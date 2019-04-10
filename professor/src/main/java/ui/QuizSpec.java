@@ -24,7 +24,7 @@ public class QuizSpec {
                 File file = new File("resources/" + filename + ".json");
                 try {
                     if (file.createNewFile()) {
-                        JOptionPane.showMessageDialog(null, "File is created to save this quiz !");
+                        JOptionPane.showMessageDialog(null, "File is created to save this quiztaker !");
                     } else {
                         JOptionPane.showMessageDialog(null, "A Quiz with this Title already exists !");
                     }

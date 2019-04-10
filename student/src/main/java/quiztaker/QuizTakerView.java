@@ -1,17 +1,18 @@
-package main.java.quiz;
+package main.java.quiztaker;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import main.java.ServiceImplementation.NavigationService;
+import main.java.quizlist.QuizListViewController;
+import service.IView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.quiz.Popup;
-
-public class StudentView extends JFrame {
+public class QuizTakerView extends JPanel implements IView {
     private JRadioButton aRadioButton;
     private JRadioButton bRadioButton;
     private JRadioButton cRadioButton;
@@ -24,11 +25,12 @@ public class StudentView extends JFrame {
     private JTextField choiceC;
     private JTextField choiceD;
     private JLabel quizTitle;
-    private int number_of_incorrect_answers=0;
-    private int i =1;
+    private int number_of_incorrect_answers = 0;
+    private int i = 1;
 
     private JLabel questionNumber;
     private JLabel questionTitle;
+
     public JLabel getQuizTitleLabel() {
         return quizTitle;
     }
@@ -36,15 +38,19 @@ public class StudentView extends JFrame {
     public JTextField getchoiceALabel() {
         return choiceA;
     }
+
     public JTextField getchoiceBLabel() {
         return choiceB;
     }
+
     public JTextField getchoiceCLabel() {
         return choiceC;
     }
+
     public JTextField getchoiceDLabel() {
         return choiceD;
     }
+
     public JLabel getQuestionNumberLabel() {
         return questionNumber;
     }
@@ -53,13 +59,27 @@ public class StudentView extends JFrame {
         return questionTitle;
     }
 
-    public JButton getNextButton() { return nextButton;}
-    public JRadioButton getaRadioButton() { return aRadioButton; }
-    public JRadioButton getbRadioButton(){ return bRadioButton; }
-    public JRadioButton getcRadioButton() { return cRadioButton; }
-    public JRadioButton getdRadioButton() { return dRadioButton; }
+    public JButton getNextButton() {
+        return nextButton;
+    }
 
-    public StudentView() {
+    public JRadioButton getaRadioButton() {
+        return aRadioButton;
+    }
+
+    public JRadioButton getbRadioButton() {
+        return bRadioButton;
+    }
+
+    public JRadioButton getcRadioButton() {
+        return cRadioButton;
+    }
+
+    public JRadioButton getdRadioButton() {
+        return dRadioButton;
+    }
+
+    public QuizTakerView() {
         quizTitle.setText("Quiz Title");
         questionNumber.setText("Question Number");
         questionTitle.setText("Question Title");
@@ -67,22 +87,23 @@ public class StudentView extends JFrame {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-        nextButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                if(i!=0)
-                {
+        nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (i != 0) {
                     i--;
-                }
-                else
-                {
-                Popup popup = new Popup(number_of_incorrect_answers);
+                } else {
+                    Popup popup = new Popup(number_of_incorrect_answers);
                 }
             }
         });
 
 
-
-
+        giveUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NavigationService.getInstance().navigate(QuizListViewController.class, null);
+            }
+        });
     }
 
     {
@@ -171,5 +192,4 @@ public class StudentView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel_StudentApp;
     }
-
 }
