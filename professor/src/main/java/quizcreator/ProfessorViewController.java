@@ -14,6 +14,9 @@ public class ProfessorViewController
     {
         private ProfessorView professorView;
         private ProfessorModel professorModel;
+
+        private int questionNumber;
+
         public ProfessorViewController(ProfessorView professorView, ProfessorModel professorModel) {
         this.professorView = professorView;
         this.professorModel = professorModel;
@@ -27,7 +30,35 @@ public class ProfessorViewController
         answerInput3Listener();
         answerInput4Listener();
         nextButtonListener();
+        questionNumber = 1;
+
     }
+
+    private void initializeQuestionFrame() {
+        clearTextBoxes();
+        incrementQuestionNumber();
+        resetSelectionOnRadioButtons();
+    }
+
+    private void incrementQuestionNumber() {
+            questionNumber++;
+            //professorView.getLabel1().setText("Question " + (questionNumber));
+    }
+
+
+        private void resetSelectionOnRadioButtons()
+        {
+            professorView.getButtonGroup().clearSelection();
+        }
+
+        private void clearTextBoxes() {
+            professorView.getAnswerInput1().setText("");
+            professorView.getAnswerInput2().setText("");
+            professorView.getAnswerInput3().setText("");
+            professorView.getAnswerInput4().setText("");
+            professorView.getQuestionInput().setText("");
+        }
+
 
     private void OptionAListener()
     {
@@ -123,7 +154,7 @@ public class ProfessorViewController
                         && professorView.getOptionC().isSelected() == false && professorView.getOptionD().isSelected() == false){
                     JOptionPane.showMessageDialog(null,
                             "Please select at lease one correct answer");
-                }else {
+                } else {
                     saveCurrentQuestion();
                 }
 
@@ -149,6 +180,8 @@ public class ProfessorViewController
         options.add(professorView.getAnswerInput4().getText());
         String questionTitle = professorView.getQuestionInput().getText();
         professorModel.saveQuestion(questionTitle, options, "");
+
+        initializeQuestionFrame();
 
     }
 

@@ -21,6 +21,18 @@ public class ProfessorView extends JFrame {
     private JRadioButton OptionB;
     private JRadioButton OptionC;
     private JRadioButton OptionD;
+    private ButtonGroup buttonGroup;
+    private JLabel label1;
+
+    public JLabel getLabel1() {
+        return label1;
+    }
+
+
+    public ButtonGroup getButtonGroup() {
+        return buttonGroup;
+    }
+
 
     public JPanel getPanel_ProfessorApp() {
         return panel_ProfessorApp;
@@ -71,18 +83,16 @@ public class ProfessorView extends JFrame {
         answerInput2.setText("Enter Option 2");
         answerInput3.setText("Enter Option 3");
         answerInput4.setText("Enter Option 4");
-        ButtonGroup group = new ButtonGroup();
-        group.add(OptionA);
-        group.add(OptionB);
-        group.add(OptionC);
-        group.add(OptionD);
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(OptionA);
+        buttonGroup.add(OptionB);
+        buttonGroup.add(OptionC);
+        buttonGroup.add(OptionD);
     }
 
     public JButton getNextButton() {
         return nextButton;
     }
-
-
 
 
     {
@@ -105,35 +115,38 @@ public class ProfessorView extends JFrame {
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        final JLabel label1 = new JLabel();
-        label1.setText("Enter the question");
-        panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label2 = new JLabel();
+        label2.setText("Question 1");
+        panel1.add(label2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         QuestionInput = new JTextArea();
         QuestionInput.setText("");
-        QuestionInput.setBackground(Color.LIGHT_GRAY);
         panel_ProfessorApp.add(QuestionInput, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         answerInput1 = new JTextField();
-        answerInput1.setText("Enter Option 1");
+        answerInput1.setText("Answer Text");
         panel2.add(answerInput1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput2 = new JTextField();
-        answerInput2.setText("Enter Option 2");
+        answerInput2.setText("Answer Text");
         panel2.add(answerInput2, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput3 = new JTextField();
-        answerInput3.setText("Enter Option 3");
+        answerInput3.setText("Answer Text");
         panel2.add(answerInput3, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput4 = new JTextField();
-        answerInput4.setText("Enter Option 4");
+        answerInput4.setText("Answer Text");
         panel2.add(answerInput4, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         OptionA = new JRadioButton();
+        OptionA.setText("A");
         panel2.add(OptionA, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionB = new JRadioButton();
+        OptionB.setText("B");
         panel2.add(OptionB, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionC = new JRadioButton();
+        OptionC.setText("C");
         panel2.add(OptionC, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionD = new JRadioButton();
+        OptionD.setText("D");
         panel2.add(OptionD, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
@@ -154,4 +167,5 @@ public class ProfessorView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel_ProfessorApp;
     }
+
 }
