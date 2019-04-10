@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class ProfessorView extends JFrame {
+public class QuizCreatorView extends JFrame {
     public JPanel panel_ProfessorApp;
     private JTextArea QuestionInput;
     private JButton nextButton;
@@ -66,7 +66,7 @@ public class ProfessorView extends JFrame {
         return OptionD;
     }
 
-    public ProfessorView() {
+    public QuizCreatorView() {
         answerInput1.setText("Enter Option 1");
         answerInput2.setText("Enter Option 2");
         answerInput3.setText("Enter Option 3");
@@ -81,8 +81,6 @@ public class ProfessorView extends JFrame {
     public JButton getNextButton() {
         return nextButton;
     }
-
-
 
 
     {
@@ -106,34 +104,37 @@ public class ProfessorView extends JFrame {
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
-        label1.setText("Enter the question");
+        label1.setText("Question 1");
         panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         QuestionInput = new JTextArea();
         QuestionInput.setText("");
-        QuestionInput.setBackground(Color.LIGHT_GRAY);
         panel_ProfessorApp.add(QuestionInput, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         answerInput1 = new JTextField();
-        answerInput1.setText("Enter Option 1");
+        answerInput1.setText("Answer Text");
         panel2.add(answerInput1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput2 = new JTextField();
-        answerInput2.setText("Enter Option 2");
+        answerInput2.setText("Answer Text");
         panel2.add(answerInput2, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput3 = new JTextField();
-        answerInput3.setText("Enter Option 3");
+        answerInput3.setText("Answer Text");
         panel2.add(answerInput3, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         answerInput4 = new JTextField();
-        answerInput4.setText("Enter Option 4");
+        answerInput4.setText("Answer Text");
         panel2.add(answerInput4, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         OptionA = new JRadioButton();
+        OptionA.setText("A");
         panel2.add(OptionA, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionB = new JRadioButton();
+        OptionB.setText("B");
         panel2.add(OptionB, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionC = new JRadioButton();
+        OptionC.setText("C");
         panel2.add(OptionC, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         OptionD = new JRadioButton();
+        OptionD.setText("D");
         panel2.add(OptionD, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));

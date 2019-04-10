@@ -1,8 +1,11 @@
-package dao;
+package dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code Question} class represents the DTO for a quiz question
+ */
 public class Question {
 
     private String title;

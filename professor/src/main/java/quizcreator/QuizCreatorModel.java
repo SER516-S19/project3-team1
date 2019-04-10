@@ -1,14 +1,13 @@
 package main.java.quizcreator;
 
-import dao.Question;
-import dao.Quiz;
+import dto.Question;
+import dto.Quiz;
 import json.QuizAccessor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProfessorModel {
+public class QuizCreatorModel {
 
     private Quiz quiz = new Quiz();
 
@@ -16,7 +15,7 @@ public class ProfessorModel {
         return this.quiz;
     }
 
-    public ProfessorModel(String quizFileName) {
+    public QuizCreatorModel(String quizFileName) {
 
     }
 
@@ -46,7 +45,7 @@ public class ProfessorModel {
         newQuestion.setTitle(questionTitle);
         newQuestion.setOptions(options);
         newQuestion.setCorrectAnswer(correctOption);
-        quiz.questions.add(newQuestion);
+        quiz.getQuestions().add(newQuestion);
     }
 
 }

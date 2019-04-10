@@ -1,22 +1,27 @@
-package main.java.quiz;
+package main.java.quiztaker;
 
-import dao.Quiz;
+import dto.Quiz;
 import json.QuizAccessor;
+import service.IModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentModel {
+public class QuizTakerModel implements IModel {
 
     private Quiz quiz;
-    List<Integer> incorrectQuestionsIndex = new ArrayList<Integer>();
+    private List<Integer> incorrectQuestionsIndex = new ArrayList<Integer>();
 
-    public Quiz getQuiz() {
+    Quiz getQuiz() {
         return quiz;
     }
 
-    public StudentModel(String quizFileName) {
+    public QuizTakerModel() {
+
+    }
+
+    public void loadQuiz(String quizFileName) {
 
         try {
             quiz = QuizAccessor.readQuizFromFile("Resources/" + quizFileName);
@@ -27,7 +32,7 @@ public class StudentModel {
     }
 
     /**
-     * This method is responsible for evaluating each question attempted in the quiz.
+     * This method is responsible for evaluating each question attempted in the quiztaker.
      * If the answer selected by user is incorrect, it adds the question's index to a list of incorrect questions.
      *
      * @param currentQuestionIndex
@@ -35,8 +40,8 @@ public class StudentModel {
      */
     public void evaluateAnswer(int currentQuestionIndex, int selectedOptionIndex) {
 
-        if (quiz.questions.get(currentQuestionIndex).getCorrectAnswer()
-                != quiz.questions.get(currentQuestionIndex).getOptions().get(selectedOptionIndex))
+        if (quiz.getQuestions().get(currentQuestionIndex).getCorrectAnswer()
+                != quiz.getQuestions().get(currentQuestionIndex).getOptions().get(selectedOptionIndex))
             incorrectQuestionsIndex.add(currentQuestionIndex);
     }
 
