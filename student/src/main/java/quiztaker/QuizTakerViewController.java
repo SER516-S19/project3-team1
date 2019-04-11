@@ -74,25 +74,26 @@ public class QuizTakerViewController implements IViewController {
     }
     private void evaluateAnswerAndLoadNextQuestion(){
 
-        int selectedOptionIndex = 0;
-        if(quizTakerView.getaRadioButton().isSelected()){
-            selectedOptionIndex=0;
-        }
-        else if(quizTakerView.getbRadioButton().isSelected()){
-            selectedOptionIndex=1;
-        }
-        else if(quizTakerView.getcRadioButton().isSelected()){
-            selectedOptionIndex=2;
-        }
-        else{
-            selectedOptionIndex=3;
-        }
-        quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
-        currentQuestionIndex+=1;
-        if (currentQuestionIndex < quizTakerModel.getQuiz().getQuestions().size())
-            renderQuestionToFrame();
-        else
+        if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size()-1) {
             showResultPopup();
+        } else {
+            int selectedOptionIndex;
+            if(quizTakerView.getaRadioButton().isSelected()){
+                selectedOptionIndex=0;
+            }
+            else if(quizTakerView.getbRadioButton().isSelected()){
+                selectedOptionIndex=1;
+            }
+            else if(quizTakerView.getcRadioButton().isSelected()){
+                selectedOptionIndex=2;
+            }
+            else {
+                selectedOptionIndex=3;
+            }
+            quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
+            currentQuestionIndex+=1;
+            renderQuestionToFrame();
+        }
 
 
     }
