@@ -16,7 +16,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="bd262" class="javax.swing.JLabel">
+          <component id="bd262" class="javax.swing.JLabel" binding="questionNumberLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -151,4 +151,12 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="OptionsGroup">
+      <member id="c850"/>
+      <member id="dca36"/>
+      <member id="e2d3f"/>
+      <member id="8fe42"/>
+    </group>
+  </buttonGroups>
 </form>

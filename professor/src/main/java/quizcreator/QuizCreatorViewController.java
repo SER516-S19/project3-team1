@@ -14,6 +14,7 @@ public class QuizCreatorViewController
     {
         private QuizCreatorView quizCreatorView;
         private QuizCreatorModel quizCreatorModel;
+        private int questionNumber;
         public QuizCreatorViewController(QuizCreatorView quizCreatorView, QuizCreatorModel quizCreatorModel) {
         this.quizCreatorView = quizCreatorView;
         this.quizCreatorModel = quizCreatorModel;
@@ -27,7 +28,34 @@ public class QuizCreatorViewController
         answerInput3Listener();
         answerInput4Listener();
         nextButtonListener();
+
+        questionNumber =1;
     }
+
+        private void initializeQuestionFrame() {
+            clearTextBoxes();
+            incrementQuestionNumber();
+            resetSelectionOnRadioButtons();
+        }
+
+        private void incrementQuestionNumber() {
+            questionNumber++;
+            quizCreatorView.getQuestionNumberLabel().setText("Question "+ questionNumber);
+        }
+
+
+        private void resetSelectionOnRadioButtons()
+        {
+            quizCreatorView.getOptionsGroup().clearSelection();
+        }
+
+        private void clearTextBoxes() {
+            quizCreatorView.getAnswerInput1().setText("");
+            quizCreatorView.getAnswerInput2().setText("");
+            quizCreatorView.getAnswerInput3().setText("");
+            quizCreatorView.getAnswerInput4().setText("");
+            quizCreatorView.getQuestionInput().setText("");
+        }
 
     private void OptionAListener()
     {
@@ -148,8 +176,26 @@ public class QuizCreatorViewController
         options.add(quizCreatorView.getAnswerInput3().getText());
         options.add(quizCreatorView.getAnswerInput4().getText());
         String questionTitle = quizCreatorView.getQuestionInput().getText();
-        quizCreatorModel.saveQuestion(questionTitle, options, "");
+        quizCreatorModel.saveQuestion(questionTitle, options, getSelectedOptionText());
 
+        initializeQuestionFrame();
+
+    }
+
+    private String getSelectedOptionText() {
+            String selectedOption;
+            if (quizCreatorView.getOptionA().isSelected()) {
+                selectedOption = quizCreatorView.getOptionA().getText();
+            } else if (quizCreatorView.getOptionB().isSelected()) {
+                selectedOption = quizCreatorView.getOptionB().getText();
+            } else if (quizCreatorView.getOptionC().isSelected()) {
+                selectedOption = quizCreatorView.getOptionC().getText();
+            } else if (quizCreatorView.getOptionD().isSelected()) {
+                selectedOption = quizCreatorView.getOptionD().getText();
+            } else {
+                selectedOption = null;
+            }
+            return selectedOption;
     }
 
 }
