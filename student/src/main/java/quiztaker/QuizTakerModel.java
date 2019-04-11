@@ -13,6 +13,10 @@ public class QuizTakerModel implements IModel {
     private Quiz quiz;
     private List<Integer> incorrectQuestionsIndex = new ArrayList<Integer>();
 
+    public List<Integer> getIncorrectQuestionsIndex() {
+        return incorrectQuestionsIndex;
+    }
+
     Quiz getQuiz() {
         return quiz;
     }

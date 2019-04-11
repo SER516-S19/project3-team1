@@ -74,29 +74,55 @@ public class QuizTakerViewController implements IViewController {
     }
     private void evaluateAnswerAndLoadNextQuestion(){
 
-        int selectedOptionIndex = 0;
-        if(quizTakerView.getaRadioButton().isSelected()){
-            selectedOptionIndex=0;
-        }
-        else if(quizTakerView.getbRadioButton().isSelected()){
-            selectedOptionIndex=1;
-        }
-        else if(quizTakerView.getcRadioButton().isSelected()){
-            selectedOptionIndex=2;
-        }
-        else{
-            selectedOptionIndex=3;
-        }
-        quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
-
-        if (currentQuestionIndex < quizTakerModel.getQuiz().getQuestions().size()-1)
+        if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size()-1) {
+            showResultPopup();
+        } else {
+            int selectedOptionIndex;
+            if(quizTakerView.getaRadioButton().isSelected()){
+                selectedOptionIndex=0;
+            }
+            else if(quizTakerView.getbRadioButton().isSelected()){
+                selectedOptionIndex=1;
+            }
+            else if(quizTakerView.getcRadioButton().isSelected()){
+                selectedOptionIndex=2;
+            }
+            else {
+                selectedOptionIndex=3;
+            }
+            quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
             currentQuestionIndex+=1;
-        else
-            currentQuestionIndex=0;
+            renderQuestionToFrame();
+        }
 
-        renderQuestionToFrame();
+
     }
 
+    private void showResultPopup()
+    {
+        String message = "";
+        if(this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0)
+        {
+            message = "Number of incorrect Answers : " +
+                    this.quizTakerModel.getIncorrectQuestionsIndex().size() +
+                    "\nPress OK to re-attempt";
+        }
+        else
+        {
+            message = "YOU MADE IT..!";
+        }
+        int result = JOptionPane.showOptionDialog(null, message, "Quiz Result",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+        if (result == 0 && this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0) {
+               initiateQuizForIncorrectQuestions();
+        }
+
+    }
+
+    private void initiateQuizForIncorrectQuestions() {
+
+    }
 
     @Override
     public JComponent getRootComponent() {
