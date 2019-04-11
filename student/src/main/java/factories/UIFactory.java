@@ -36,6 +36,10 @@ public class UIFactory {
         IView view = (IView) VIEW_CONTROLLER_TO_VIEW_MAP.get(viewControllerType).getConstructor().newInstance();
         IViewController viewController = (IViewController) viewControllerType.getConstructor().newInstance();
         viewController.initializeViewController(view, model, params);
+
+
+
+
         return viewController;
     }
 }

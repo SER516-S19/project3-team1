@@ -11,6 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
+
 public class QuizListViewController implements IViewController {
     private QuizListModel quizListModel;
     private QuizListView quizListView;
@@ -27,6 +32,7 @@ public class QuizListViewController implements IViewController {
         quizListView = (QuizListView) view;
         quizListModel = (QuizListModel) model;
         registerForActionListeners();
+        getQuizNames();
     }
 
     private void registerForActionListeners() {
@@ -42,4 +48,17 @@ public class QuizListViewController implements IViewController {
             }
         });
     }
+
+
+    private List<String> quizNames = new ArrayList<String>();
+
+    public List<String> getQuizNames() {
+        File folder = new File("Resources");
+        File[] listOfFiles = folder.listFiles();
+        for(int i =0;i<listOfFiles.length;i++){
+            quizNames.add(listOfFiles[i].getName().substring(0, listOfFiles[i].getName().indexOf(".")));
+        }
+        return quizNames;
+    }
+
 }
