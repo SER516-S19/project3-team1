@@ -1,5 +1,7 @@
 package main.java.quiztaker;
 
+import main.java.ServiceImplementation.NavigationService;
+import main.java.quizlist.QuizListViewController;
 import service.IModel;
 import service.IView;
 import service.IViewController;
@@ -7,7 +9,10 @@ import service.IViewController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 
 public class QuizTakerViewController implements IViewController {
     private QuizTakerView quizTakerView;
@@ -33,10 +38,7 @@ public class QuizTakerViewController implements IViewController {
 
     private void resetSelectionsOnRadioButtons(){
 
-        quizTakerView.getaRadioButton().setSelected(false);
-        quizTakerView.getbRadioButton().setSelected(false);
-        quizTakerView.getcRadioButton().setSelected(false);
-        quizTakerView.getdRadioButton().setSelected(false);
+        quizTakerView.getButtonGroup().clearSelection();
 
     }
 
@@ -74,27 +76,28 @@ public class QuizTakerViewController implements IViewController {
     }
     private void evaluateAnswerAndLoadNextQuestion(){
 
+        int selectedOptionIndex;
+        if(quizTakerView.getaRadioButton().isSelected()){
+            selectedOptionIndex=0;
+        }
+        else if(quizTakerView.getbRadioButton().isSelected()){
+            selectedOptionIndex=1;
+        }
+        else if(quizTakerView.getcRadioButton().isSelected()){
+            selectedOptionIndex=2;
+        }
+        else {
+            selectedOptionIndex=3;
+        }
+        quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
+
         if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size()-1) {
             showResultPopup();
         } else {
-            int selectedOptionIndex;
-            if(quizTakerView.getaRadioButton().isSelected()){
-                selectedOptionIndex=0;
-            }
-            else if(quizTakerView.getbRadioButton().isSelected()){
-                selectedOptionIndex=1;
-            }
-            else if(quizTakerView.getcRadioButton().isSelected()){
-                selectedOptionIndex=2;
-            }
-            else {
-                selectedOptionIndex=3;
-            }
-            quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
+
             currentQuestionIndex+=1;
             renderQuestionToFrame();
         }
-
 
     }
 
@@ -117,11 +120,17 @@ public class QuizTakerViewController implements IViewController {
         if (result == 0 && this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0) {
                initiateQuizForIncorrectQuestions();
         }
+        else {
+            NavigationService.getInstance().navigate(QuizListViewController.class,null);
+        }
 
     }
 
     private void initiateQuizForIncorrectQuestions() {
 
+        quizTakerModel.prepareQuizWithIncorrectAnswers();
+        currentQuestionIndex = 0;
+        renderQuestionToFrame();
     }
 
     @Override
