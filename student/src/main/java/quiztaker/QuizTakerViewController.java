@@ -88,15 +88,40 @@ public class QuizTakerViewController implements IViewController {
             selectedOptionIndex=3;
         }
         quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
-
-        if (currentQuestionIndex < quizTakerModel.getQuiz().getQuestions().size()-1)
-            currentQuestionIndex+=1;
+        currentQuestionIndex+=1;
+        if (currentQuestionIndex < quizTakerModel.getQuiz().getQuestions().size())
+            renderQuestionToFrame();
         else
-            currentQuestionIndex=0;
+            showResultPopup();
 
-        renderQuestionToFrame();
+
     }
 
+    private void showResultPopup()
+    {
+        String message = "";
+        if(this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0)
+        {
+            message = "Number of incorrect Answers : " +
+                    this.quizTakerModel.getIncorrectQuestionsIndex().size() +
+                    "\nPress OK to re-attempt";
+        }
+        else
+        {
+            message = "YOU MADE IT..!";
+        }
+        int result = JOptionPane.showOptionDialog(null, message, "Quiz Result",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+        if (result == 0 && this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0) {
+               initiateQuizForIncorrectQuestions();
+        }
+
+    }
+
+    private void initiateQuizForIncorrectQuestions() {
+
+    }
 
     @Override
     public JComponent getRootComponent() {

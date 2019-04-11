@@ -25,8 +25,7 @@ public class QuizTakerView extends JPanel implements IView {
     private JTextField choiceC;
     private JTextField choiceD;
     private JLabel quizTitle;
-    private int number_of_incorrect_answers = 0;
-    private int i = 1;
+
 
     private JLabel questionNumber;
     private JLabel questionTitle;
@@ -87,15 +86,7 @@ public class QuizTakerView extends JPanel implements IView {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-        nextButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (i != 0) {
-                    i--;
-                } else {
-                    Popup popup = new Popup(number_of_incorrect_answers);
-                }
-            }
-        });
+
 
 
         giveUpButton.addActionListener(new ActionListener() {
