@@ -3,21 +3,29 @@ package main.java.quizlist;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import service.IView;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 
 public class QuizListView extends JPanel implements IView {
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+
     private JPanel panel;
     private JButton navigateToQuizPageButton;
-
     public JButton getNavigateToQuizPageButton() {
         return navigateToQuizPageButton;
     }
 
     public QuizListView() {
         $$$setupUI$$$();
+
     }
 
     /**
@@ -30,13 +38,15 @@ public class QuizListView extends JPanel implements IView {
     private void $$$setupUI$$$() {
         panel = new JPanel();
         panel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
-        panel.setBackground(new Color(-12510186));
         navigateToQuizPageButton = new JButton();
         navigateToQuizPageButton.setText("navigate to quiz page with Quiz1.json as param");
         panel.add(navigateToQuizPageButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+
     }
 
-    /**
+
+
+  /**
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
