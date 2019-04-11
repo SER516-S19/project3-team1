@@ -35,8 +35,6 @@ public class QuizListViewController implements IViewController {
         quizListModel = (QuizListModel) model;
         buttonCreation();
         registerForActionListeners();
-
-
     }
 
     private void registerForActionListeners() {
@@ -53,14 +51,9 @@ public class QuizListViewController implements IViewController {
 //        });
     }
 
-
-
     public void setQuizNames(List<String> quizNames)
     {
-        //this.quizNames=quizListModel.getQuizNames();
         this.quizNames=quizNames;
-        System.out.println("quiz set"+this.quizNames);
-
     }
 
     private void buttonCreation() {
@@ -69,12 +62,9 @@ public class QuizListViewController implements IViewController {
         JPanel panel= quizListView.getPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         for(int i=results.size()-1;i>=0;i--){
-            System.out.println(i);
-            System.out.println(results.get(i).toString());
             JButton button= new JButton();
             button.setText(results.get(i).toString());
             panel.add(button);
         }
     }
-
 }
