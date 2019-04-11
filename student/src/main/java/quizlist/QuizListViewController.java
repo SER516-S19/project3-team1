@@ -19,8 +19,10 @@ import java.io.File;
 public class QuizListViewController implements IViewController {
     private QuizListModel quizListModel;
     private QuizListView quizListView;
+    private List<String> quizNames = new ArrayList<String>();
 
-    public QuizListViewController(){}
+    public QuizListViewController(){
+    }
 
     @Override
     public JComponent getRootComponent() {
@@ -31,34 +33,48 @@ public class QuizListViewController implements IViewController {
     public void initializeViewController(IView view, IModel model, HashMap<String, String> params) {
         quizListView = (QuizListView) view;
         quizListModel = (QuizListModel) model;
+        buttonCreation();
         registerForActionListeners();
-        getQuizNames();
+
+
     }
 
     private void registerForActionListeners() {
-        quizListView.getNavigateToQuizPageButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                HashMap<String, String> params = new HashMap<String, String>() {
-                    {
-                        put("selectedQuizName", "Quiz1.json");
-                    }
-                };
-                NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
-            }
-        });
+//        quizListView.getNavigateToQuizPageButton().addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                HashMap<String, String> params = new HashMap<String, String>() {
+//                    {
+//                        put("selectedQuizName", "Quiz1.json");
+//                    }
+//                };
+//                NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
+//            }
+//        });
     }
 
 
-    private List<String> quizNames = new ArrayList<String>();
 
-    public List<String> getQuizNames() {
-        File folder = new File("Resources");
-        File[] listOfFiles = folder.listFiles();
-        for(int i =0;i<listOfFiles.length;i++){
-            quizNames.add(listOfFiles[i].getName().substring(0, listOfFiles[i].getName().indexOf(".")));
+    public void setQuizNames(List<String> quizNames)
+    {
+        //this.quizNames=quizListModel.getQuizNames();
+        this.quizNames=quizNames;
+        System.out.println("quiz set"+this.quizNames);
+
+    }
+
+    private void buttonCreation() {
+        setQuizNames(quizListModel.getQuizNames());
+        List results=quizNames;
+        JPanel panel= quizListView.getPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        for(int i=results.size()-1;i>=0;i--){
+            System.out.println(i);
+            System.out.println(results.get(i).toString());
+            JButton button= new JButton();
+            button.setText(results.get(i).toString());
+            panel.add(button);
         }
-        return quizNames;
     }
 
 }
