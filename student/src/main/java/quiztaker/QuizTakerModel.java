@@ -1,6 +1,7 @@
 package main.java.quiztaker;
 
 import dto.Quiz;
+import dto.Question;
 import json.QuizAccessor;
 import service.IModel;
 
@@ -44,9 +45,24 @@ public class QuizTakerModel implements IModel {
      */
     public void evaluateAnswer(int currentQuestionIndex, int selectedOptionIndex) {
 
-        if (quiz.getQuestions().get(currentQuestionIndex).getCorrectAnswer()
-                != quiz.getQuestions().get(currentQuestionIndex).getOptions().get(selectedOptionIndex))
-            incorrectQuestionsIndex.add(currentQuestionIndex);
+        if (!quiz.getQuestions().get(currentQuestionIndex).getCorrectAnswer()
+                .equals(quiz.getQuestions().get(currentQuestionIndex).getOptions().get(selectedOptionIndex)))
+            if(!incorrectQuestionsIndex.contains(currentQuestionIndex))
+                incorrectQuestionsIndex.add(currentQuestionIndex);
+    }
+
+    public void prepareQuizWithIncorrectAnswers(){
+
+        List<Question> questionList = new ArrayList<Question>() ;
+        List<Integer> incorrectIndexes = this.getIncorrectQuestionsIndex();
+        int eachQuestionIndex;
+        for(eachQuestionIndex=0;eachQuestionIndex  < incorrectIndexes.size() ; eachQuestionIndex++){
+
+            questionList.add(quiz.getQuestions().get(incorrectIndexes.get(eachQuestionIndex)));
+        }
+        quiz.setQuestions(questionList);
+        this.incorrectQuestionsIndex.clear();
+
     }
 
 }

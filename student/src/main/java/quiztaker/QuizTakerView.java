@@ -29,6 +29,7 @@ public class QuizTakerView extends JPanel implements IView {
 
     private JLabel questionNumber;
     private JLabel questionTitle;
+    private ButtonGroup buttonGroup1;
 
     public JLabel getQuizTitleLabel() {
         return quizTitle;
@@ -77,6 +78,8 @@ public class QuizTakerView extends JPanel implements IView {
     public JRadioButton getdRadioButton() {
         return dRadioButton;
     }
+
+    public ButtonGroup getButtonGroup() { return buttonGroup1; }
 
     public QuizTakerView() {
         quizTitle.setText("Quiz Title");
@@ -169,12 +172,6 @@ public class QuizTakerView extends JPanel implements IView {
         questionTitle = new JLabel();
         questionTitle.setText("QuestionTitle");
         panel3.add(questionTitle, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        ButtonGroup buttonGroup;
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(dRadioButton);
-        buttonGroup.add(cRadioButton);
-        buttonGroup.add(bRadioButton);
-        buttonGroup.add(aRadioButton);
     }
 
     /**
