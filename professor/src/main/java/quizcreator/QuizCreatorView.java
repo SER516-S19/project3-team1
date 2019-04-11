@@ -3,6 +3,7 @@ package main.java.quizcreator;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import javafx.scene.control.Button;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,16 @@ public class QuizCreatorView extends JFrame {
     private JRadioButton OptionB;
     private JRadioButton OptionC;
     private JRadioButton OptionD;
+    private JLabel questionNumberLabel;
+    private ButtonGroup optionsGroup;
+
+    public JLabel getQuestionNumberLabel() {
+        return questionNumberLabel;
+    }
+
+    public ButtonGroup getOptionsGroup() {
+        return optionsGroup;
+    }
 
     public JPanel getPanel_ProfessorApp() {
         return panel_ProfessorApp;
@@ -71,11 +82,11 @@ public class QuizCreatorView extends JFrame {
         answerInput2.setText("Enter Option 2");
         answerInput3.setText("Enter Option 3");
         answerInput4.setText("Enter Option 4");
-        ButtonGroup group = new ButtonGroup();
-        group.add(OptionA);
-        group.add(OptionB);
-        group.add(OptionC);
-        group.add(OptionD);
+        optionsGroup = new ButtonGroup();
+        optionsGroup.add(OptionA);
+        optionsGroup.add(OptionB);
+        optionsGroup.add(OptionC);
+        optionsGroup.add(OptionD);
     }
 
     public JButton getNextButton() {
@@ -103,9 +114,9 @@ public class QuizCreatorView extends JFrame {
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panel_ProfessorApp.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        final JLabel label1 = new JLabel();
-        label1.setText("Question 1");
-        panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        questionNumberLabel = new JLabel();
+        questionNumberLabel.setText("Question 1");
+        panel1.add(questionNumberLabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         QuestionInput = new JTextArea();
         QuestionInput.setText("");
         panel_ProfessorApp.add(QuestionInput, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
@@ -147,6 +158,12 @@ public class QuizCreatorView extends JFrame {
         saveButton = new JButton();
         saveButton.setText("Save");
         panel3.add(saveButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        ButtonGroup buttonGroup;
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(OptionA);
+        buttonGroup.add(OptionB);
+        buttonGroup.add(OptionC);
+        buttonGroup.add(OptionD);
     }
 
     /**
@@ -155,4 +172,5 @@ public class QuizCreatorView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel_ProfessorApp;
     }
+
 }
