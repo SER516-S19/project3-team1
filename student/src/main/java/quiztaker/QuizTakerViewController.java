@@ -24,10 +24,7 @@ public class QuizTakerViewController implements IViewController {
 
 
     private void renderQuestionToFrame() {
-
-
         loadQuestion(currentQuestionIndex);
-        loadQuizTitle(currentQuestionIndex);
         loadOptions(currentQuestionIndex);
         loadQuestionNumber(currentQuestionIndex);
         resetSelectionsOnRadioButtons();
@@ -84,9 +81,8 @@ public class QuizTakerViewController implements IViewController {
         quizTakerView.getQuestionTitleLabel().setText(quizTakerModel.getQuiz().getQuestions().get(currentQuestionIndex).getTitle());
     }
 
-    private void loadQuizTitle(int currentQuestionIndex) {
-        int quiz = currentQuestionIndex + 1;
-        quizTakerView.getQuizTitleLabel().setText("Quiz " + quiz);
+    private void loadQuizTitle(String quizTitle) {
+        quizTakerView.getQuizTitleLabel().setText(quizTitle);
     }
 
 
@@ -167,9 +163,15 @@ public class QuizTakerViewController implements IViewController {
     public void initializeViewController(IView view, IModel model, HashMap<String, String> params) {
         quizTakerView = (QuizTakerView) view;
         quizTakerModel = (QuizTakerModel) model;
-        if (params != null && params.containsKey("selectedQuizName")) {
-            quizTakerModel.loadQuiz(params.get("selectedQuizName"));
+        if (params != null) {
+            if (params.containsKey("selectedQuizName")) {
+                quizTakerModel.loadQuiz(params.get("selectedQuizName"));
+            }
+            if (params.containsKey("quizTitle")) {
+                loadQuizTitle(params.get("quizTitle"));
+            }
         }
+
         renderQuestionToFrame();
         registerActionListenersForUIComponents();
     }
