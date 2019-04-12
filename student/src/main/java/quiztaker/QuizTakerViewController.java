@@ -109,9 +109,13 @@ public class QuizTakerViewController implements IViewController {
             selectedOptionIndex = 1;
         } else if (quizTakerView.getcRadioButton().isSelected()) {
             selectedOptionIndex = 2;
-        } else {
+        } else if (quizTakerView.getdRadioButton().isSelected()){
             selectedOptionIndex = 3;
         }
+        else{
+            selectedOptionIndex = -1;
+        }
+
         quizTakerModel.evaluateAnswer(currentQuestionIndex, selectedOptionIndex);
 
         if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size() - 1) {
