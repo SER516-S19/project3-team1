@@ -47,8 +47,17 @@ public class QuizTakerViewController implements IViewController {
     }
 
     private void registerActionListenersForUIComponents() {
-
+        registerActionListenerForGiveUpButton();
         registerActionListenerForNextButton();
+    }
+
+    private void registerActionListenerForGiveUpButton() {
+        quizTakerView.getGiveUpButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NavigationService.getInstance().navigate(QuizListViewController.class, null);
+            }
+        });
     }
 
     private void resetSelectionsOnRadioButtons() {

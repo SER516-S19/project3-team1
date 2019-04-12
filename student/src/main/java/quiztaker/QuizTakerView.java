@@ -3,14 +3,9 @@ package main.java.quiztaker;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-import main.java.ServiceImplementation.NavigationService;
-import main.java.quizlist.QuizListViewController;
 import service.IView;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class QuizTakerView extends JPanel implements IView {
     private JRadioButton aRadioButton;
@@ -83,6 +78,10 @@ public class QuizTakerView extends JPanel implements IView {
         return buttonGroup1;
     }
 
+    public JButton getGiveUpButton() {
+        return giveUpButton;
+    }
+
     public QuizTakerView() {
         quizTitle.setText("Quiz Title");
         questionNumber.setText("Question Number");
@@ -91,14 +90,6 @@ public class QuizTakerView extends JPanel implements IView {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-
-
-        giveUpButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                NavigationService.getInstance().navigate(QuizListViewController.class, null);
-            }
-        });
     }
 
     {
