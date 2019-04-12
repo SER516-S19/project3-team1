@@ -29,7 +29,7 @@ public class QuizTakerModel implements IModel {
     public void loadQuiz(String quizFileName) {
 
         try {
-            quiz = QuizAccessor.readQuizFromFile("Resources/" + quizFileName + ".json");
+            quiz = QuizAccessor.readQuizFromFile("Resources/" + quizFileName);
             System.out.println(quiz);
         } catch (IOException e) {
             e.printStackTrace();
