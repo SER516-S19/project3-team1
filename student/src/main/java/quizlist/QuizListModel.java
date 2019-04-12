@@ -10,16 +10,29 @@ public class QuizListModel implements IModel {
     public QuizListModel() {
     }
 
-    private List<String> quizNames = new ArrayList<String>();
-
-    public List<String> getQuizNames() {
+    List<String> getQuizNames() {
+        List<String> quizNames = new ArrayList<String>();
         File folder = new File("Resources");
         File[] listOfFiles = folder.listFiles();
-        for(int i =0;i<listOfFiles.length;i++){
-            quizNames.add(listOfFiles[i].getName().substring(0, listOfFiles[i].getName().indexOf(".")));
+        if (listOfFiles != null) {
+            for (File file : listOfFiles) {
+                quizNames.add(file.getName());
+            }
         }
-
         return quizNames;
+    }
+
+    public List<String> getQuizNamesWithoutExtension(List<String> quiznames) {
+        List<String> quizNamesWithoutExtension = new ArrayList<String>();
+        for(String quizName : quiznames){
+            int index = quizName.lastIndexOf(".");
+            if (index > 0){
+                quizNamesWithoutExtension.add(quizName.substring(0, index));
+            } else {
+                quizNamesWithoutExtension.add(quizName);
+            }
+        }
+        return quizNamesWithoutExtension;
     }
 
 

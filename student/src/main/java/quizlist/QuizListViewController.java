@@ -14,7 +14,6 @@ import java.util.HashMap;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.io.File;
 
 public class QuizListViewController implements IViewController {
     private QuizListModel quizListModel;
@@ -33,35 +32,31 @@ public class QuizListViewController implements IViewController {
     public void initializeViewController(IView view, IModel model, HashMap<String, String> params) {
         quizListView = (QuizListView) view;
         quizListModel = (QuizListModel) model;
+        loadQuizNames();
         buttonCreation();
-        registerForActionListeners();
     }
 
-    private void registerForActionListeners()
+    private void loadQuizNames()
     {
-
-
-    }
-
-    public void setQuizNames(List<String> quizNames)
-    {
-        this.quizNames=quizNames;
+        this.quizNames = quizListModel.getQuizNames();
     }
 
     private void buttonCreation() {
-        setQuizNames(quizListModel.getQuizNames());
-        List results=quizNames;
+
+        List<String> quizNamesWithoutExtension = quizListModel.getQuizNamesWithoutExtension(quizNames);
         JPanel panel= quizListView.getPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        for(int i=results.size()-1;i>=0;i--){
+        for(int i=quizNames.size()-1;i>=0;i--){
             JButton button= new JButton();
-            button.setText(results.get(i).toString());
+            button.setText(quizNamesWithoutExtension.get(i));
+            button.setName(quizNames.get(i));
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(final ActionEvent e) {
                     HashMap<String, String> params = new HashMap<String, String>() {
                         {
-                            put("selectedQuizName", ((JButton) e.getSource()).getText());
+                            put("selectedQuizName", ((JButton) e.getSource()).getName());
+                            put("quizTitle", ((JButton) e.getSource()).getText());
                         }
                     };
                     NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
