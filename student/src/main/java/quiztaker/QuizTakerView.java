@@ -79,7 +79,9 @@ public class QuizTakerView extends JPanel implements IView {
         return dRadioButton;
     }
 
-    public ButtonGroup getButtonGroup() { return buttonGroup1; }
+    public ButtonGroup getButtonGroup() {
+        return buttonGroup1;
+    }
 
     public QuizTakerView() {
         quizTitle.setText("Quiz Title");
@@ -89,7 +91,6 @@ public class QuizTakerView extends JPanel implements IView {
         choiceB.setText("choiceB");
         choiceC.setText("choiceC");
         choiceD.setText("choiceD");
-
 
 
         giveUpButton.addActionListener(new ActionListener() {
@@ -172,6 +173,11 @@ public class QuizTakerView extends JPanel implements IView {
         questionTitle = new JLabel();
         questionTitle.setText("QuestionTitle");
         panel3.add(questionTitle, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(dRadioButton);
+        buttonGroup1.add(cRadioButton);
+        buttonGroup1.add(bRadioButton);
+        buttonGroup1.add(aRadioButton);
     }
 
     /**
@@ -180,4 +186,5 @@ public class QuizTakerView extends JPanel implements IView {
     public JComponent $$$getRootComponent$$$() {
         return panel_StudentApp;
     }
+
 }

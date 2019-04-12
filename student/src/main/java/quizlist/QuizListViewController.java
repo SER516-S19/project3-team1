@@ -37,18 +37,10 @@ public class QuizListViewController implements IViewController {
         registerForActionListeners();
     }
 
-    private void registerForActionListeners() {
-//        quizListView.getNavigateToQuizPageButton().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                HashMap<String, String> params = new HashMap<String, String>() {
-//                    {
-//                        put("selectedQuizName", "Quiz1.json");
-//                    }
-//                };
-//                NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
-//            }
-//        });
+    private void registerForActionListeners()
+    {
+
+
     }
 
     public void setQuizNames(List<String> quizNames)
@@ -64,6 +56,17 @@ public class QuizListViewController implements IViewController {
         for(int i=results.size()-1;i>=0;i--){
             JButton button= new JButton();
             button.setText(results.get(i).toString());
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(final ActionEvent e) {
+                    HashMap<String, String> params = new HashMap<String, String>() {
+                        {
+                            put("selectedQuizName", ((JButton) e.getSource()).getText());
+                        }
+                    };
+                    NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
+                }
+            });
             panel.add(button);
         }
     }
