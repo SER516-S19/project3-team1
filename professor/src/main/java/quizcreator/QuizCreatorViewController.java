@@ -1,4 +1,6 @@
 package main.java.quizcreator;
+import json.QuizAccessor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +31,43 @@ public class QuizCreatorViewController
         answerInput3Listener();
         answerInput4Listener();
         nextButtonListener();
+        saveButtonListener();
 
         questionNumber =1;
     }
+
+        private void saveButtonListener() {
+            quizCreatorView.getSaveButton().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (quizCreatorView.getOptionA().isSelected() == false
+                        && quizCreatorView.getOptionB().isSelected() == false
+                        && quizCreatorView.getOptionC().isSelected() == false
+                        && quizCreatorView.getOptionD().isSelected() == false) {
+                        JOptionPane.showMessageDialog(null,
+                                "Please select at lease one correct answer");
+                    } else {
+                        saveCurrentQuestion();
+                        String quizName = JOptionPane.showInputDialog("Enter quiz name");
+                        try {
+                            QuizAccessor.writeQuizToFile(quizCreatorModel.getQuiz(),
+                                    "Resources/" + quizName + ".json");
+                            JOptionPane.showMessageDialog(null, "Quiz successfully saved!");
+                            prepareUIForNewQuiz();
+                        } catch (IOException e1) {
+                            JOptionPane.showMessageDialog(null, "Error in saving quiz!");
+                        }
+                    }
+                }
+            });
+        }
+
+        private void prepareUIForNewQuiz() {
+            questionNumber =1;
+            quizCreatorView.getQuestionNumberLabel().setText("Question "+ questionNumber);
+            clearTextBoxes();
+            resetSelectionOnRadioButtons();
+        }
 
         private void initializeQuestionFrame() {
             clearTextBoxes();
@@ -133,8 +170,8 @@ public class QuizCreatorViewController
             }
         });
     }
-    private void answerInput4Listener()
-    {
+
+    private void answerInput4Listener() {
         quizCreatorView.getAnswerInput4().addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -142,8 +179,8 @@ public class QuizCreatorViewController
             }
         });
     }
-    private void nextButtonListener()
-    {
+
+    private void nextButtonListener() {
         quizCreatorView.getNextButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,14 +190,14 @@ public class QuizCreatorViewController
                             "Please select at lease one correct answer");
                 }else {
                     saveCurrentQuestion();
+                    initializeQuestionFrame();
                 }
-
             }
 
         });
     }
-    private void initializeView()
-    {
+
+    private void initializeView() {
         JFrame frame = new JFrame("Professor");
         frame.setContentPane(quizCreatorView.$$$getRootComponent$$$());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -177,21 +214,18 @@ public class QuizCreatorViewController
         options.add(quizCreatorView.getAnswerInput4().getText());
         String questionTitle = quizCreatorView.getQuestionInput().getText();
         quizCreatorModel.saveQuestion(questionTitle, options, getSelectedOptionText());
-
-        initializeQuestionFrame();
-
     }
 
     private String getSelectedOptionText() {
             String selectedOption;
             if (quizCreatorView.getOptionA().isSelected()) {
-                selectedOption = quizCreatorView.getOptionA().getText();
+                selectedOption = quizCreatorView.getAnswerInput1().getText();
             } else if (quizCreatorView.getOptionB().isSelected()) {
-                selectedOption = quizCreatorView.getOptionB().getText();
+                selectedOption = quizCreatorView.getAnswerInput2().getText();
             } else if (quizCreatorView.getOptionC().isSelected()) {
-                selectedOption = quizCreatorView.getOptionC().getText();
+                selectedOption = quizCreatorView.getAnswerInput3().getText();
             } else if (quizCreatorView.getOptionD().isSelected()) {
-                selectedOption = quizCreatorView.getOptionD().getText();
+                selectedOption = quizCreatorView.getAnswerInput4().getText();
             } else {
                 selectedOption = null;
             }
