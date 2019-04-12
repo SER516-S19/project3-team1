@@ -18,25 +18,40 @@ public class QuizTakerViewController implements IViewController {
     private QuizTakerView quizTakerView;
     private QuizTakerModel quizTakerModel;
     private int currentQuestionIndex = 0;
-    public QuizTakerViewController() {}
+
+    public QuizTakerViewController() {
+    }
 
 
+    private void renderQuestionToFrame() {
 
-    private void renderQuestionToFrame(){
 
         loadQuestion(currentQuestionIndex);
         loadQuizTitle(currentQuestionIndex);
         loadOptions(currentQuestionIndex);
         loadQuestionNumber(currentQuestionIndex);
         resetSelectionsOnRadioButtons();
+        setTextForNext();
     }
 
-    private void registerActionListenersForUIComponents(){
+    /**
+     * This method is responsible for displaying Submit button while displaying the last question otherwise having the
+     * button display Next.
+     */
+    private void setTextForNext() {
+        if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size() - 1)
+            quizTakerView.getNextButton().setText("Submit");
+        else
+            quizTakerView.getNextButton().setText("Next");
+
+    }
+
+    private void registerActionListenersForUIComponents() {
 
         registerActionListenerForNextButton();
     }
 
-    private void resetSelectionsOnRadioButtons(){
+    private void resetSelectionsOnRadioButtons() {
 
         quizTakerView.getButtonGroup().clearSelection();
 
@@ -52,20 +67,21 @@ public class QuizTakerViewController implements IViewController {
 
 
     private void loadQuestionNumber(int currentQuestionIndex) {
-        int question=currentQuestionIndex+1;
-        quizTakerView.getQuestionNumberLabel().setText("Question "+question);
+        int question = currentQuestionIndex + 1;
+        quizTakerView.getQuestionNumberLabel().setText("Question " + question);
     }
+
     private void loadQuestion(int currentQuestionIndex) {
         quizTakerView.getQuestionTitleLabel().setText(quizTakerModel.getQuiz().getQuestions().get(currentQuestionIndex).getTitle());
     }
 
     private void loadQuizTitle(int currentQuestionIndex) {
-        int quiz=currentQuestionIndex+1;
-        quizTakerView.getQuizTitleLabel().setText("Quiz "+quiz);
+        int quiz = currentQuestionIndex + 1;
+        quizTakerView.getQuizTitleLabel().setText("Quiz " + quiz);
     }
 
 
-    private void registerActionListenerForNextButton(){
+    private void registerActionListenerForNextButton() {
 
         quizTakerView.getNextButton().addActionListener(new ActionListener() {
             @Override
@@ -74,55 +90,51 @@ public class QuizTakerViewController implements IViewController {
             }
         });
     }
-    private void evaluateAnswerAndLoadNextQuestion(){
+
+    private void evaluateAnswerAndLoadNextQuestion() {
 
         int selectedOptionIndex;
-        if(quizTakerView.getaRadioButton().isSelected()){
-            selectedOptionIndex=0;
+        if (quizTakerView.getaRadioButton().isSelected()) {
+            selectedOptionIndex = 0;
+        } else if (quizTakerView.getbRadioButton().isSelected()) {
+            selectedOptionIndex = 1;
+        } else if (quizTakerView.getcRadioButton().isSelected()) {
+            selectedOptionIndex = 2;
+        } else {
+            selectedOptionIndex = 3;
         }
-        else if(quizTakerView.getbRadioButton().isSelected()){
-            selectedOptionIndex=1;
-        }
-        else if(quizTakerView.getcRadioButton().isSelected()){
-            selectedOptionIndex=2;
-        }
-        else {
-            selectedOptionIndex=3;
-        }
-        quizTakerModel.evaluateAnswer(currentQuestionIndex,selectedOptionIndex);
+        quizTakerModel.evaluateAnswer(currentQuestionIndex, selectedOptionIndex);
 
-        if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size()-1) {
+        if (currentQuestionIndex == quizTakerModel.getQuiz().getQuestions().size() - 1) {
             showResultPopup();
         } else {
 
-            currentQuestionIndex+=1;
+            currentQuestionIndex += 1;
             renderQuestionToFrame();
         }
 
     }
 
-    private void showResultPopup()
-    {
+    private void showResultPopup() {
         String message = "";
-        if(this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0)
-        {
+        if (this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0) {
             message = "Number of incorrect Answers : " +
                     this.quizTakerModel.getIncorrectQuestionsIndex().size() +
                     "\nPress OK to re-attempt";
-        }
-        else
-        {
+        } else {
             message = "YOU MADE IT..!";
         }
         int result = JOptionPane.showOptionDialog(null, message, "Quiz Result",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
-        if (result == 0 && this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0) {
-               initiateQuizForIncorrectQuestions();
+        if (result == 0) {
+            if (this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0)
+                initiateQuizForIncorrectQuestions();
+            else {
+                NavigationService.getInstance().navigate(QuizListViewController.class, null);
+            }
         }
-        else {
-            NavigationService.getInstance().navigate(QuizListViewController.class,null);
-        }
+
 
     }
 
