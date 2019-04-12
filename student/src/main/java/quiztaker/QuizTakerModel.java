@@ -45,6 +45,12 @@ public class QuizTakerModel implements IModel {
      */
     public void evaluateAnswer(int currentQuestionIndex, int selectedOptionIndex) {
 
+        if(selectedOptionIndex == -1){
+            if(!incorrectQuestionsIndex.contains(currentQuestionIndex))
+                incorrectQuestionsIndex.add(currentQuestionIndex);
+            return;
+        }
+
         if (!quiz.getQuestions().get(currentQuestionIndex).getCorrectAnswer()
                 .equals(quiz.getQuestions().get(currentQuestionIndex).getOptions().get(selectedOptionIndex)))
             if(!incorrectQuestionsIndex.contains(currentQuestionIndex))
