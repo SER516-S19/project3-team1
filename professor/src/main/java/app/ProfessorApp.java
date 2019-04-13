@@ -7,8 +7,9 @@ import main.java.quizcreator.QuizCreatorViewController;
 
 public class ProfessorApp {
     public static void main(String[] args) {
-        QuizCreatorModel quizCreatorModel = new QuizCreatorModel("Quiz1.json");
+        QuizCreatorModel quizCreatorModel = new QuizCreatorModel();
         QuizCreatorView quizCreatorView = new QuizCreatorView();
-        QuizCreatorViewController quizCreatorViewController = new QuizCreatorViewController(quizCreatorView, quizCreatorModel);
+        QuizCreatorViewController quizCreatorViewController =
+                new QuizCreatorViewController(quizCreatorView, quizCreatorModel);
     }
 }
