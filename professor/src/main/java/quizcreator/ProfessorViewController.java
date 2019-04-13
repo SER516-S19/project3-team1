@@ -22,10 +22,6 @@ public class ProfessorViewController
         OptionBListener();
         OptionCListener();
         OptionDListener();
-        answerInput1Listener();
-        answerInput2Listener();
-        answerInput3Listener();
-        answerInput4Listener();
         nextButtonListener();
     }
 
@@ -75,42 +71,6 @@ public class ProfessorViewController
                 professorView.getAnswerInput2().setForeground(Color.RED);
                 professorView.getAnswerInput3().setForeground(Color.RED);
                 professorView.getAnswerInput1().setForeground(Color.RED);
-            }
-        });
-    }
-    private void answerInput1Listener()
-    {
-        professorView.getAnswerInput1().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                professorView.getAnswerInput1().setText("");
-            }
-        });
-    }
-    private void answerInput2Listener()
-    {
-        professorView.getAnswerInput2().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                professorView.getAnswerInput2().setText("");
-            }
-        });
-    }
-    private void answerInput3Listener()
-    {
-        professorView.getAnswerInput3().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                professorView.getAnswerInput3().setText("");
-            }
-        });
-    }
-    private void answerInput4Listener()
-    {
-        professorView.getAnswerInput4().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                professorView.getAnswerInput4().setText("");
             }
         });
     }
