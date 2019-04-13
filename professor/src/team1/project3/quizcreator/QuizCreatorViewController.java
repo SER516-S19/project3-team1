@@ -17,26 +17,41 @@ public class QuizCreatorViewController {
     private QuizCreatorModel quizCreatorModel;
     private int questionNumber;
 
-    public QuizCreatorViewController(QuizCreatorView quizCreatorView, QuizCreatorModel quizCreatorModel) {
-        this.quizCreatorView = quizCreatorView;
-        this.quizCreatorModel = quizCreatorModel;
-        initializeView();
-        OptionAListener();
-        OptionBListener();
-        OptionCListener();
-        OptionDListener();
-        nextButtonListener();
-        saveButtonListener();
-        questionNumber = 1;
-    }
+    private ActionListener OptionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String option = e.getActionCommand();
+
+            quizCreatorView.getAnswerInput1().setForeground((option.equals("A")) ? Color.GREEN : Color.RED);
+            quizCreatorView.getAnswerInput2().setForeground((option.equals("B")) ? Color.GREEN : Color.RED);
+            quizCreatorView.getAnswerInput3().setForeground((option.equals("C")) ? Color.GREEN : Color.RED);
+            quizCreatorView.getAnswerInput4().setForeground((option.equals("D")) ? Color.GREEN : Color.RED);
+        }
+    };
+
+     /**
+     * Validates if all the fields are entered for a question to be added, saves the current question data
+     * and initialises the frame to input the next question
+     */
+    private ActionListener nextButtonListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (!isValidQuestion()) {
+                JOptionPane.showMessageDialog(null,
+                        "Please fill in all the fields");
+            } else {
+                saveCurrentQuestion();
+                initializeQuestionFrame();
+            }
+        }
+    };
 
     /**
      * Checks for validation and saves the current question data.
      */
-    private void saveButtonListener() {
-        quizCreatorView.getSaveButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    private ActionListener saveButtonListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             if (!isValidQuestion()) {
                 JOptionPane.showMessageDialog(null,
                         "Please fill in all the fields");
@@ -52,8 +67,22 @@ public class QuizCreatorViewController {
                     JOptionPane.showMessageDialog(null, "Error in saving quiz!");
                 }
             }
-            }
-        });
+        }
+    };
+
+    public QuizCreatorViewController(QuizCreatorView quizCreatorView, QuizCreatorModel quizCreatorModel) {
+        this.quizCreatorView = quizCreatorView;
+        this.quizCreatorModel = quizCreatorModel;
+
+        quizCreatorView.getOptionA().addActionListener(OptionListener);
+        quizCreatorView.getOptionB().addActionListener(OptionListener);
+        quizCreatorView.getOptionC().addActionListener(OptionListener);
+        quizCreatorView.getOptionD().addActionListener(OptionListener);
+
+        quizCreatorView.getNextButton().addActionListener(nextButtonListener);
+        quizCreatorView.getSaveButton().addActionListener(saveButtonListener);
+
+        questionNumber = 1;
     }
 
     /**
@@ -107,83 +136,6 @@ public class QuizCreatorViewController {
         quizCreatorView.getAnswerInput3().setText("");
         quizCreatorView.getAnswerInput4().setText("");
         quizCreatorView.getQuestionInput().setText("");
-    }
-
-    private void OptionAListener() {
-        quizCreatorView.getOptionA().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizCreatorView.getAnswerInput1().setForeground(Color.GREEN);
-                quizCreatorView.getAnswerInput2().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput3().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput4().setForeground(Color.RED);
-            }
-        });
-    }
-
-    private void OptionBListener() {
-        quizCreatorView.getOptionB().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizCreatorView.getAnswerInput2().setForeground(Color.GREEN);
-                quizCreatorView.getAnswerInput1().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput3().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput4().setForeground(Color.RED);
-            }
-        });
-    }
-
-    private void OptionCListener() {
-        quizCreatorView.getOptionC().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizCreatorView.getAnswerInput3().setForeground(Color.GREEN);
-                quizCreatorView.getAnswerInput2().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput1().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput4().setForeground(Color.RED);
-            }
-        });
-    }
-
-    private void OptionDListener() {
-        quizCreatorView.getOptionD().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizCreatorView.getAnswerInput4().setForeground(Color.GREEN);
-                quizCreatorView.getAnswerInput2().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput3().setForeground(Color.RED);
-                quizCreatorView.getAnswerInput1().setForeground(Color.RED);
-            }
-        });
-    }
-
-    /**
-     * Validates if all the fields are entered for a question to be added, saves the current question data
-     * and initialises the frame to input the next question
-     */
-    private void nextButtonListener() {
-        quizCreatorView.getNextButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if (!isValidQuestion()) {
-                JOptionPane.showMessageDialog(null,
-                        "Please fill in all the fields");
-            } else {
-                saveCurrentQuestion();
-                initializeQuestionFrame();
-            }
-            }
-
-        });
-    }
-
-    private void initializeView() {
-        JFrame frame = new JFrame("Professor");
-        frame.setContentPane(quizCreatorView.$$$getRootComponent$$$());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 
     private void saveCurrentQuestion() {
