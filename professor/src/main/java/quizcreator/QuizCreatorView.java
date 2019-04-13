@@ -3,12 +3,12 @@ package main.java.quizcreator;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-import javafx.scene.control.Button;
 
 import javax.swing.*;
 import java.awt.*;
-
-
+/*
+ This class allows us to create a new quiz , where the user can create questions, options and choose the answer
+ */
 public class QuizCreatorView extends JFrame {
     public JPanel panel_ProfessorApp;
     private JTextArea QuestionInput;
@@ -76,7 +76,9 @@ public class QuizCreatorView extends JFrame {
     public JRadioButton getOptionD() {
         return OptionD;
     }
-
+/**
+ * The default view of a question in the quiz creator
+ */
     public QuizCreatorView() {
         answerInput1.setText("");
         answerInput2.setText("");

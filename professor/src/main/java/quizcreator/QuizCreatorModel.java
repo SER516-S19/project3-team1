@@ -7,6 +7,9 @@ import json.QuizAccessor;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Creates the model of the quiz
+ */
 public class QuizCreatorModel {
 
     private Quiz quiz = new Quiz();
@@ -19,6 +22,10 @@ public class QuizCreatorModel {
 
     }
 
+    /**
+     * Exports the the quiz file to the quiz application.
+     * @param quizFileName
+     */
     public void exportQuiz(String quizFileName) {
         try
         {
