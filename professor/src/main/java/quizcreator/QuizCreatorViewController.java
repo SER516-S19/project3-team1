@@ -26,10 +26,6 @@ public class QuizCreatorViewController
         OptionBListener();
         OptionCListener();
         OptionDListener();
-        answerInput1Listener();
-        answerInput2Listener();
-        answerInput3Listener();
-        answerInput4Listener();
         nextButtonListener();
         saveButtonListener();
 
@@ -40,12 +36,9 @@ public class QuizCreatorViewController
             quizCreatorView.getSaveButton().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (quizCreatorView.getOptionA().isSelected() == false
-                        && quizCreatorView.getOptionB().isSelected() == false
-                        && quizCreatorView.getOptionC().isSelected() == false
-                        && quizCreatorView.getOptionD().isSelected() == false) {
+                    if (!isValidQuestion()) {
                         JOptionPane.showMessageDialog(null,
-                                "Please select at lease one correct answer");
+                                "Please fill in all the fields");
                     } else {
                         saveCurrentQuestion();
                         String quizName = JOptionPane.showInputDialog("Enter quiz name");
@@ -60,6 +53,17 @@ public class QuizCreatorViewController
                     }
                 }
             });
+        }
+
+        private boolean isValidQuestion() {
+            return (quizCreatorView.getOptionA().isSelected()
+                    || quizCreatorView.getOptionB().isSelected()
+                    || quizCreatorView.getOptionC().isSelected()
+                    || quizCreatorView.getOptionD().isSelected())
+                    && !quizCreatorView.getAnswerInput1().getText().equals("")
+                    && !quizCreatorView.getAnswerInput2().getText().equals("")
+                    && !quizCreatorView.getAnswerInput3().getText().equals("")
+                    && !quizCreatorView.getAnswerInput4().getText().equals("");
         }
 
         private void prepareUIForNewQuiz() {
@@ -80,13 +84,17 @@ public class QuizCreatorViewController
             quizCreatorView.getQuestionNumberLabel().setText("Question "+ questionNumber);
         }
 
-
-        private void resetSelectionOnRadioButtons()
-        {
+        private void resetSelectionOnRadioButtons() {
             quizCreatorView.getOptionsGroup().clearSelection();
+            quizCreatorView.getAnswerInput1().setForeground(Color.black);
+            quizCreatorView.getAnswerInput2().setForeground(Color.black);
+            quizCreatorView.getAnswerInput3().setForeground(Color.black);
+            quizCreatorView.getAnswerInput4().setForeground(Color.black);
         }
 
+
         private void clearTextBoxes() {
+
             quizCreatorView.getAnswerInput1().setText("");
             quizCreatorView.getAnswerInput2().setText("");
             quizCreatorView.getAnswerInput3().setText("");
@@ -143,51 +151,14 @@ public class QuizCreatorViewController
             }
         });
     }
-    private void answerInput1Listener()
-    {
-        quizCreatorView.getAnswerInput1().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput1().setText("");
-            }
-        });
-    }
-    private void answerInput2Listener()
-    {
-        quizCreatorView.getAnswerInput2().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput2().setText("");
-            }
-        });
-    }
-    private void answerInput3Listener()
-    {
-        quizCreatorView.getAnswerInput3().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput3().setText("");
-            }
-        });
-    }
-
-    private void answerInput4Listener() {
-        quizCreatorView.getAnswerInput4().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput4().setText("");
-            }
-        });
-    }
 
     private void nextButtonListener() {
         quizCreatorView.getNextButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (quizCreatorView.getOptionA().isSelected() == false && quizCreatorView.getOptionB().isSelected() == false
-                        && quizCreatorView.getOptionC().isSelected() == false && quizCreatorView.getOptionD().isSelected() == false){
+                if (!isValidQuestion()){
                     JOptionPane.showMessageDialog(null,
-                            "Please select at lease one correct answer");
+                            "Please fill in all the fields");
                 }else {
                     saveCurrentQuestion();
                     initializeQuestionFrame();

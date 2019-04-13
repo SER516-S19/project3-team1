@@ -78,10 +78,10 @@ public class QuizCreatorView extends JFrame {
     }
 
     public QuizCreatorView() {
-        answerInput1.setText("Enter Option 1");
-        answerInput2.setText("Enter Option 2");
-        answerInput3.setText("Enter Option 3");
-        answerInput4.setText("Enter Option 4");
+        answerInput1.setText("");
+        answerInput2.setText("");
+        answerInput3.setText("");
+        answerInput4.setText("");
         optionsGroup = new ButtonGroup();
         optionsGroup.add(OptionA);
         optionsGroup.add(OptionB);
@@ -172,5 +172,4 @@ public class QuizCreatorView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel_ProfessorApp;
     }
-
 }
