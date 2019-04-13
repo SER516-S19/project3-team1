@@ -3,23 +3,32 @@
 ## Members
  - Janice Abraham
  - Krishna Chandu Akula
- - John Alden
+ - John Alden(Scrum master)
  - Janani Anand
  - Shefali Anand
  - Suraj Atmakuri
  - Pallavi Bahl
  - Mayank Batra
  - Ankita Shivanand Bhandari
- - Pradeep Ambalam Jawaharlal
+ - Pradeep Ambalam Jawaharlal(Product Owner)
 
 ## Building
 
-To build the student Application: `mvn package -am -pl student`  
-To build the professor Application: `mvn package -am -pl professor`  
+To build the student Application:
+1. Navigate to the project root folder(project3-team1) in terminal
+2. Execute the command `mvn package -am -pl student` 
+
+
+To build the professor Application: 
+1. Navigate to the project root folder(project3-team1) in terminal
+2. Execute the command `mvn package -am -pl professor` 
+          
 
 ## Running
 
-The jar files are located in `target/` in each sub-project directory after compilation.  
+The jar files are located in `target/` in each sub-project directory after compilation.
+To launch the respective applications, Go to the project root folder in terminal and execute the following commands-
+
 Student: `java -jar student/target/StudentApp.jar`  
 Professor: `java -jar professor/target/ProfessorApp.jar`  
 
