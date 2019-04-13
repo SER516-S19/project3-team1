@@ -1,7 +1,6 @@
 package team1.project3.quizlist;
 
 import team1.project3.service.IModel;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

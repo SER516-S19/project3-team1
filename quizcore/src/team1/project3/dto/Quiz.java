@@ -1,15 +1,12 @@
 package team1.project3.dto;
 
-import team1.project3.dto.Question;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The {@code Quiz} class represents the DTO for a quiz
  */
-public class Quiz
-{
+public class Quiz {
     private List<Question> questions;
 
     public Quiz() {
