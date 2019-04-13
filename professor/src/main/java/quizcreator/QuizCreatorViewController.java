@@ -31,7 +31,7 @@ public class QuizCreatorViewController {
     }
 
     /**
-     *
+     * Checks for validation and saves the current question data.
      */
     private void saveButtonListener() {
         quizCreatorView.getSaveButton().addActionListener(new ActionListener() {
@@ -56,6 +56,10 @@ public class QuizCreatorViewController {
         });
     }
 
+
+    /**
+     * Validates if all the fields are entered for a question to be added
+     */
     private boolean isValidQuestion() {
         return (quizCreatorView.getOptionA().isSelected()
                 || quizCreatorView.getOptionB().isSelected()
@@ -74,6 +78,9 @@ public class QuizCreatorViewController {
         resetSelectionOnRadioButtons();
     }
 
+    /**
+     * Calls the relevant functions for clearing form fields.
+     */
     private void initializeQuestionFrame() {
         clearTextBoxes();
         incrementQuestionNumber();
@@ -92,7 +99,6 @@ public class QuizCreatorViewController {
         quizCreatorView.getAnswerInput3().setForeground(Color.black);
         quizCreatorView.getAnswerInput4().setForeground(Color.black);
     }
-
 
     private void clearTextBoxes() {
         quizCreatorView.getAnswerInput1().setText("");
@@ -150,6 +156,10 @@ public class QuizCreatorViewController {
         });
     }
 
+    /**
+     * Validates if all the fields are entered for a question to be added, saves the current question data
+     * and initialises the frame to input the next question
+     */
     private void nextButtonListener() {
         quizCreatorView.getNextButton().addActionListener(new ActionListener() {
             @Override
