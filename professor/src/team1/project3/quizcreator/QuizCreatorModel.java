@@ -14,16 +14,14 @@ public class QuizCreatorModel {
         return this.quiz;
     }
 
-    public QuizCreatorModel(String quizFileName) {
-
-    }
-
-    public void exportQuiz(String quizFileName) {
+    public boolean exportQuiz(String quizFileName) {
         try {
             QuizFactory.writeQuizToFile(quiz, "Resources/" + quizFileName);
+            return true;
         }
         catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -42,5 +40,4 @@ public class QuizCreatorModel {
         newQuestion.setCorrectAnswer(correctOption);
         quiz.getQuestions().add(newQuestion);
     }
-
 }

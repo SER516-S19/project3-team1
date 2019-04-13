@@ -41,7 +41,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>main.java.app.ProfessorApp</mainClass>
+                                    <mainClass>team1.project3.ProfessorApp</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

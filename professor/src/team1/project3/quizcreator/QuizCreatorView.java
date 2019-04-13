@@ -31,12 +31,12 @@ public class QuizCreatorView extends JFrame {
         return optionsGroup;
     }
 
-    public JPanel getPanel_ProfessorApp() {
-        return panel_ProfessorApp;
-    }
-
     public JTextArea getQuestionInput() {
         return QuestionInput;
+    }
+
+    public JButton getNextButton() {
+        return nextButton;
     }
 
     public JButton getSaveButton() {
@@ -76,19 +76,11 @@ public class QuizCreatorView extends JFrame {
     }
 
     public QuizCreatorView() {
-        answerInput1.setText("Enter Option 1");
-        answerInput2.setText("Enter Option 2");
-        answerInput3.setText("Enter Option 3");
-        answerInput4.setText("Enter Option 4");
         optionsGroup = new ButtonGroup();
         optionsGroup.add(OptionA);
         optionsGroup.add(OptionB);
         optionsGroup.add(OptionC);
         optionsGroup.add(OptionD);
-    }
-
-    public JButton getNextButton() {
-        return nextButton;
     }
 
 
