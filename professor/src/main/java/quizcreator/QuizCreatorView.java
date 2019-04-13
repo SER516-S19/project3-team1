@@ -78,10 +78,10 @@ public class QuizCreatorView extends JFrame {
     }
 
     public QuizCreatorView() {
-        answerInput1.setText("Enter Option 1");
-        answerInput2.setText("Enter Option 2");
-        answerInput3.setText("Enter Option 3");
-        answerInput4.setText("Enter Option 4");
+        answerInput1.setText("");
+        answerInput2.setText("");
+        answerInput3.setText("");
+        answerInput4.setText("");
         optionsGroup = new ButtonGroup();
         optionsGroup.add(OptionA);
         optionsGroup.add(OptionB);
@@ -158,12 +158,6 @@ public class QuizCreatorView extends JFrame {
         saveButton = new JButton();
         saveButton.setText("Save");
         panel3.add(saveButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        ButtonGroup buttonGroup;
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(OptionA);
-        buttonGroup.add(OptionB);
-        buttonGroup.add(OptionC);
-        buttonGroup.add(OptionD);
     }
 
     /**

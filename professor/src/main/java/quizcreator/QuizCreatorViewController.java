@@ -26,10 +26,6 @@ public class QuizCreatorViewController
         OptionBListener();
         OptionCListener();
         OptionDListener();
-        answerInput1Listener();
-        answerInput2Listener();
-        answerInput3Listener();
-        answerInput4Listener();
         nextButtonListener();
         saveButtonListener();
 
@@ -84,6 +80,11 @@ public class QuizCreatorViewController
         private void resetSelectionOnRadioButtons()
         {
             quizCreatorView.getOptionsGroup().clearSelection();
+            quizCreatorView.getAnswerInput1().setForeground(Color.black);
+            quizCreatorView.getAnswerInput2().setForeground(Color.black);
+            quizCreatorView.getAnswerInput3().setForeground(Color.black);
+            quizCreatorView.getAnswerInput4().setForeground(Color.black);
+
         }
 
         private void clearTextBoxes() {
@@ -140,42 +141,6 @@ public class QuizCreatorViewController
                 quizCreatorView.getAnswerInput2().setForeground(Color.RED);
                 quizCreatorView.getAnswerInput3().setForeground(Color.RED);
                 quizCreatorView.getAnswerInput1().setForeground(Color.RED);
-            }
-        });
-    }
-    private void answerInput1Listener()
-    {
-        quizCreatorView.getAnswerInput1().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput1().setText("");
-            }
-        });
-    }
-    private void answerInput2Listener()
-    {
-        quizCreatorView.getAnswerInput2().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput2().setText("");
-            }
-        });
-    }
-    private void answerInput3Listener()
-    {
-        quizCreatorView.getAnswerInput3().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput3().setText("");
-            }
-        });
-    }
-
-    private void answerInput4Listener() {
-        quizCreatorView.getAnswerInput4().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                quizCreatorView.getAnswerInput4().setText("");
             }
         });
     }
