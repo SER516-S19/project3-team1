@@ -64,7 +64,8 @@ public class QuizCreatorViewController {
                 && !quizCreatorView.getAnswerInput1().getText().equals("")
                 && !quizCreatorView.getAnswerInput2().getText().equals("")
                 && !quizCreatorView.getAnswerInput3().getText().equals("")
-                && !quizCreatorView.getAnswerInput4().getText().equals("");
+                && !quizCreatorView.getAnswerInput4().getText().equals("")
+                && !quizCreatorView.getQuestionInput().getText().equals("");
     }
 
     private void prepareUIForNewQuiz() {
