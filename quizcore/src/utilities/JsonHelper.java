@@ -30,6 +30,5 @@ public class JsonHelper {
         Gson gson = new Gson();
         return gson.fromJson(jsonString, type);
     }
-
 }
 
