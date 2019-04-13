@@ -37,7 +37,7 @@ public class QuizListViewController implements IViewController {
         quizListView = (QuizListView) view;
         quizListModel = (QuizListModel) model;
         loadQuizNames();
-        buttonCreation();
+        addQuizButtonsToUi();
     }
 
     private void loadQuizNames()
@@ -48,7 +48,7 @@ public class QuizListViewController implements IViewController {
     /**
      * On click of the button, it navigates to the quiz page passing the quiz object as a parameter
      */
-    private void buttonCreation() {
+    private void addQuizButtonsToUi() {
         List<String> quizNamesWithoutExtension = quizListModel.getQuizNamesWithoutExtension(quizNames);
         JPanel panel= quizListView.getPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
