@@ -1,11 +1,8 @@
 package team1.project3;
 
-
 import team1.project3.ServiceImplementation.NavigationService;
 import team1.project3.quizlist.QuizListViewController;
-
 import javax.swing.*;
-import java.util.HashMap;
 
 public class StudentApp {
 

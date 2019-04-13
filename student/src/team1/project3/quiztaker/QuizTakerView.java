@@ -7,6 +7,9 @@ import team1.project3.service.IView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Represents the student quiz view
+ */
 public class QuizTakerView extends JPanel implements IView {
     private JRadioButton aRadioButton;
     private JRadioButton bRadioButton;
@@ -24,59 +27,59 @@ public class QuizTakerView extends JPanel implements IView {
     private JLabel questionTitle;
     private ButtonGroup buttonGroup1;
 
-    public JLabel getQuizTitleLabel() {
+    JLabel getQuizTitleLabel() {
         return quizTitle;
     }
 
-    public JTextField getchoiceALabel() {
+    JTextField getchoiceALabel() {
         return choiceA;
     }
 
-    public JTextField getchoiceBLabel() {
+    JTextField getchoiceBLabel() {
         return choiceB;
     }
 
-    public JTextField getchoiceCLabel() {
+    JTextField getchoiceCLabel() {
         return choiceC;
     }
 
-    public JTextField getchoiceDLabel() {
+    JTextField getchoiceDLabel() {
         return choiceD;
     }
 
-    public JLabel getQuestionNumberLabel() {
+    JLabel getQuestionNumberLabel() {
         return questionNumber;
     }
 
-    public JLabel getQuestionTitleLabel() {
+    JLabel getQuestionTitleLabel() {
         return questionTitle;
     }
 
-    public JButton getNextButton() {
+    JButton getNextButton() {
         return nextButton;
     }
 
-    public JRadioButton getaRadioButton() {
+    JRadioButton getaRadioButton() {
         return aRadioButton;
     }
 
-    public JRadioButton getbRadioButton() {
+    JRadioButton getbRadioButton() {
         return bRadioButton;
     }
 
-    public JRadioButton getcRadioButton() {
+    JRadioButton getcRadioButton() {
         return cRadioButton;
     }
 
-    public JRadioButton getdRadioButton() {
+    JRadioButton getdRadioButton() {
         return dRadioButton;
     }
 
-    public ButtonGroup getButtonGroup() {
+    ButtonGroup getButtonGroup() {
         return buttonGroup1;
     }
 
-    public JButton getGiveUpButton() {
+    JButton getGiveUpButton() {
         return giveUpButton;
     }
 
