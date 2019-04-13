@@ -1,6 +1,9 @@
 package team1.project3.quizcreator;
 
 import team1.project3.QuizFactory;
+import team1.project3.service.IModel;
+import team1.project3.service.IView;
+import team1.project3.service.IViewController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +14,11 @@ import java.awt.event.FocusEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
-public class QuizCreatorViewController {
+public class QuizCreatorViewController implements IViewController {
     private QuizCreatorView quizCreatorView;
     private QuizCreatorModel quizCreatorModel;
     private int questionNumber;
@@ -64,9 +68,10 @@ public class QuizCreatorViewController {
         }
     };
 
-    public QuizCreatorViewController(QuizCreatorView quizCreatorView, QuizCreatorModel quizCreatorModel) {
-        this.quizCreatorView = quizCreatorView;
-        this.quizCreatorModel = quizCreatorModel;
+    @Override
+    public void initializeViewController(IView view, IModel model, HashMap<String, String> params) {
+        this.quizCreatorView = (QuizCreatorView) view;
+        this.quizCreatorModel = (QuizCreatorModel) model;
 
         quizCreatorView.getOptionA().addActionListener(OptionListener);
         quizCreatorView.getOptionB().addActionListener(OptionListener);
@@ -141,6 +146,5 @@ public class QuizCreatorViewController {
         }
         return selectedOption;
     }
-
 }
 

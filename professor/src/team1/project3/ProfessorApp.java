@@ -11,7 +11,8 @@ public class ProfessorApp {
     public static void main(String[] args) {
         QuizCreatorModel quizCreatorModel = new QuizCreatorModel();
         QuizCreatorView quizCreatorView = new QuizCreatorView();
-        QuizCreatorViewController quizCreatorViewController = new QuizCreatorViewController(quizCreatorView, quizCreatorModel);
+        QuizCreatorViewController quizCreatorViewController = new QuizCreatorViewController();
+        quizCreatorViewController.initializeViewController(quizCreatorView, quizCreatorModel, null);
 
         JFrame frame = new JFrame("Professor");
         frame.setContentPane(quizCreatorView.$$$getRootComponent$$$());

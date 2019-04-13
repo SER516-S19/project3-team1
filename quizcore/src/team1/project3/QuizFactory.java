@@ -19,6 +19,7 @@ public class QuizFactory {
 
     public static void writeQuizToFile(Quiz quiz, String filePath) throws IOException {
         String jsonString = new GsonBuilder().create().toJson(quiz);
+
         FileUtils.writeStringToFile(new File(filePath), jsonString);
     }
 

@@ -3,11 +3,12 @@ package team1.project3.quizcreator;
 import team1.project3.dto.Question;
 import team1.project3.dto.Quiz;
 import team1.project3.QuizFactory;
+import team1.project3.service.IModel;
 
 import java.io.IOException;
 import java.util.List;
 
-public class QuizCreatorModel {
+public class QuizCreatorModel implements IModel {
     private Quiz quiz = new Quiz();
 
     public Quiz getQuiz() {
