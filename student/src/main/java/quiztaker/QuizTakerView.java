@@ -20,8 +20,6 @@ public class QuizTakerView extends JPanel implements IView {
     private JTextField choiceC;
     private JTextField choiceD;
     private JLabel quizTitle;
-
-
     private JLabel questionNumber;
     private JLabel questionTitle;
     private ButtonGroup buttonGroup1;
