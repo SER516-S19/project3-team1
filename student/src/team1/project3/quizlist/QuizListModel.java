@@ -5,10 +5,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the model for the quiz view
+ */
 public class QuizListModel implements IModel {
+
+    /**
+     * Constructor with no parameters to create instance through {@code UIFactory}
+     */
     public QuizListModel() {
     }
 
+    /**
+     * Traverses through the list of quiz files in the resource path
+     */
     List<String> getQuizNames() {
         List<String> quizNames = new ArrayList<String>();
         File folder = new File("Resources");
@@ -21,7 +31,7 @@ public class QuizListModel implements IModel {
         return quizNames;
     }
 
-    public List<String> getQuizNamesWithoutExtension(List<String> quiznames) {
+    List<String> getQuizNamesWithoutExtension(List<String> quiznames) {
         List<String> quizNamesWithoutExtension = new ArrayList<String>();
         for(String quizName : quiznames){
             int index = quizName.lastIndexOf(".");

@@ -4,24 +4,16 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import team1.project3.service.IView;
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
-
 
 public class QuizListView extends JPanel implements IView {
-    public JPanel getPanel() {
-        return panel;
-    }
-
     private JPanel panel;
-    private JButton navigateToQuizPageButton;
 
-    public JButton getNavigateToQuizPageButton() {
-        return navigateToQuizPageButton;
+    JPanel getPanel() {
+        return panel;
     }
 
     public QuizListView() {
         $$$setupUI$$$();
-
     }
 
     /**
