@@ -1,18 +1,23 @@
 package team1.project3.quizcreator;
 
-import team1.project3.QuizFactory;
+import team1.project3.factories.QuizFactory;
+import team1.project3.service.IModel;
+import team1.project3.service.IView;
+import team1.project3.service.IViewController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * The {@code QuizCreatorViewController} represents the view controller for the Quiz Creation
  */
-public class QuizCreatorViewController {
+public class QuizCreatorViewController implements IViewController {
     private QuizCreatorView quizCreatorView;
     private QuizCreatorModel quizCreatorModel;
     private int questionNumber;
@@ -162,5 +167,16 @@ public class QuizCreatorViewController {
             selectedOption = null;
         }
         return selectedOption;
+    }
+
+    @Override
+    public JComponent getRootComponent() {
+        return quizCreatorView.$$$getRootComponent$$$();
+    }
+
+    @Override
+    public void initializeViewController(IView view, IModel model, HashMap<String, String> params) {
+        this.quizCreatorView = (QuizCreatorView) view;
+        this.quizCreatorModel = (QuizCreatorModel) model;
     }
 }

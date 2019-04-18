@@ -3,7 +3,7 @@ package team1.project3.quiztaker;
 import team1.project3.dto.Quiz;
 import team1.project3.dto.Question;
 import team1.project3.service.IModel;
-import team1.project3.QuizFactory;
+import team1.project3.factories.QuizFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

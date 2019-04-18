@@ -1,4 +1,4 @@
-package team1.project3;
+package team1.project3.factories;
 
 import org.apache.commons.io.FileUtils;
 import com.google.gson.Gson;

@@ -1,11 +1,10 @@
 package team1.project3.quiztaker;
 
-import team1.project3.ServiceImplementation.NavigationService;
-import team1.project3.quizlist.QuizListViewController;
+import team1.project3.StudentApp;
 import team1.project3.service.IModel;
 import team1.project3.service.IView;
 import team1.project3.service.IViewController;
-
+import team1.project3.utils.UiUtil;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,7 +49,7 @@ public class QuizTakerViewController implements IViewController {
         quizTakerView.getGiveUpButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NavigationService.getInstance().navigate(QuizListViewController.class, null);
+                StudentApp.navigate(UiUtil.getUIComponent("1", null));
             }
         });
     }
@@ -138,7 +137,7 @@ public class QuizTakerViewController implements IViewController {
             if (this.quizTakerModel.getIncorrectQuestionsIndex().size() > 0)
                 initiateQuizForIncorrectQuestions();
             else {
-                NavigationService.getInstance().navigate(QuizListViewController.class, null);
+                StudentApp.navigate(UiUtil.getUIComponent("1", null));
             }
         }
 

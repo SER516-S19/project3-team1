@@ -1,10 +1,10 @@
 package team1.project3.quizlist;
 
-import team1.project3.ServiceImplementation.NavigationService;
-import team1.project3.quiztaker.QuizTakerViewController;
+import team1.project3.StudentApp;
 import team1.project3.service.IModel;
 import team1.project3.service.IView;
 import team1.project3.service.IViewController;
+import team1.project3.utils.UiUtil;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,7 +65,7 @@ public class QuizListViewController implements IViewController {
                             put("quizTitle", ((JButton) e.getSource()).getText());
                         }
                     };
-                    NavigationService.getInstance().navigate(QuizTakerViewController.class, params);
+                    StudentApp.navigate(UiUtil.getUIComponent("2", params));
                 }
             });
             panel.add(button);

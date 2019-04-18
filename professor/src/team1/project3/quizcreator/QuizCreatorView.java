@@ -3,13 +3,15 @@ package team1.project3.quizcreator;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import team1.project3.service.IView;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * This class allows us to create a new quiz, where the user can create questions, options and choose the answer
  */
-public class QuizCreatorView extends JFrame {
+public class QuizCreatorView extends JFrame implements IView {
     public JPanel panel_ProfessorApp;
     private JTextArea QuestionInput;
     private JButton nextButton;

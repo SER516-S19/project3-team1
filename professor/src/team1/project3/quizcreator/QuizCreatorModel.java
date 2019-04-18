@@ -2,12 +2,14 @@ package team1.project3.quizcreator;
 
 import team1.project3.dto.Question;
 import team1.project3.dto.Quiz;
+import team1.project3.service.IModel;
+
 import java.util.List;
 
 /**
  * The {@code QuizCreatorModel} represents the model for the {@code QuizCreatorView}
  */
-public class QuizCreatorModel {
+public class QuizCreatorModel implements IModel {
 
     private Quiz quiz = new Quiz();
 
